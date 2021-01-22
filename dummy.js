@@ -5,8 +5,8 @@ const workingState =
 }
 const barista = 
 [
-    { name : "창민", makingTime : 5000, state : "Resting", waitingNum : 0, makingMenu : ""},        //waitingNum : 만들고 있는 손님의 대기번호, makingMenu : 만들고 있는 메뉴
-    { name : "재희", makingTime : 8000, state : "Resting", waitingNum : 0, makingMenu : ""}
+    { name : "창민", makingTime : 5000, state : "Resting", waitingNum : 0},        //waitingNum : 만들고 있는 손님의 대기번호, makingMenu : 만들고 있는 메뉴
+    { name : "재희", makingTime : 8000, state : "Resting", waitingNum : 0}
 ]
 
 const customer = 
