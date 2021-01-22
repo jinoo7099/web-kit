@@ -21,14 +21,12 @@ const appendCustomer = (num)=>
 
 //고객을 화면에 표시해줄 html 문자열을 생성해서 반환
 const customerHtml = (num) => 
-    `<div class="customer ${num}">
-        ${num}
-    </div>`
+    `<div class="customer">` + num + `</div>`
 
 //주문 버튼을 누를때
 const orderMenu = ()=>
 {
-    const cus = customer.find((c)=> c.orderMenu === "")
+    const cus = noneOrderCustomer()
     const bar = findRestingBarista()
     const num = cus.waitingNum
     const menu = checkOrderMenu()
@@ -40,20 +38,41 @@ const orderMenu = ()=>
     }
 
     updateCustomer(cus, menu)
-    updateBarista(bar, workingState["Work"], num, menu)
+    updateBarista(bar, workingState["Work"], num)
     makingCoffee(bar,cus, finishMake)
 }
+
+//줄 선 손님중 주문을 하지 않은 첫번째 손님 반환
+const noneOrderCustomer = ()=> customer.find((c)=> c.orderMenu==="")
+
+//일을 할 수 있는 바리스타 반환
+const findRestingBarista = ()=> barista.find((item)=>item.state === workingState["Rest"])
+
 //회원 상태 변경
 const updateCustomer = (cus, menu)=> cus.orderMenu = menu
+
+const updateBarista = (bar, state, num)=>
+{
+    bar.state = state
+    bar.waitingNum = num
+}
+
+//바리스타에게 일 줌
+const makingCoffee = (bar, cus, callback)=>
+{   
+    alert(`${bar.name} 바리스타가 ${cus.orderMenu}를 만들기 시작합니다!`)
+    if(typeof callback !=="function") return
+    updateBarista(bar,workingState["Work"], cus.waitingNum)
+    setTimeout(callback, bar.makingTime,bar,cus)
+}
 
 //음료수를 다 만들면 일어나는일
 const finishMake = (bar, cus)=>
 {
-    alert("making done")
+    alert(`${cus.waitingNum}번 손님 ${cus.orderMenu} 나왔습니다!`)
     deleteCustomerHtml(cus.waitingNum)
     deleteCustomer(cus)
-    updateBarista(bar, workingState["Rest"], 0, "")
-    //resetRadio()
+    updateBarista(bar, workingState["Rest"], 0)
 }
 
 const deleteCustomer = (cus)=>
@@ -69,20 +88,7 @@ const deleteCustomerHtml = (num)=>
     cus.parentNode.removeChild(cus)
 }
 
-//바리스타에게 일 줌
-const makingCoffee = (bar, cus, callback)=>
-{   
-    alert("making start")
-    if(typeof callback !=="function") return
-    updateBarista(bar,workingState["Work"], cus.waitingNum)
-    setTimeout(callback, bar.makingTime,bar,cus)
-}
-const updateBarista = (bar, state, num, menu)=>
-{
-    bar.state = state
-    bar.waitingNum = num
-    bar.makingMenu = menu
-}
+
 
 const checkOrderMenu = ()=>
 {
@@ -92,13 +98,7 @@ const checkOrderMenu = ()=>
         if(radio[i].checked) return radio[i].value
     }
 }
-//라디오 버튼 초기화
-const resetRadio = ()=>     //작동 안함
-{
-    const radio = document.querySelectorAll(".menuRadio")
-    for(let i=0; i<radio.length; i++)
-        radio[i].setAttribute("checked", false)
-}
+
 // const printBaristaWorking = (bar)=>
 // {
 
@@ -108,11 +108,6 @@ const resetRadio = ()=>     //작동 안함
 // {
 
 // }
-
-const findRestingBarista = ()=> barista.find((item)=>item.state === workingState["Rest"])
-
-//줄 선 손님중 주문을 하지 않은 첫번째 손님 반환
-const checkOrderCustomer = ()=> customer.find((c)=> c.orderMenu==="")
 
 const changeBarist = (name,num,menu)=>
 {
