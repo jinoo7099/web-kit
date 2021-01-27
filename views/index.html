@@ -11,19 +11,24 @@
             <form action="/create" method="POST">
                 <h1>회원정보 관리</h1>
                 이름 : <input type="text" placeholder="name" name="name"/>
-                전화번호 : <input type="text" placeholder="phone" name="phone"/><br/>
+                전화번호 : <input type="text" placeholder="phone" name="phone"/>
                 <button class="btn-create">등록</button>
             </form>
+            
+        </div>
+        <div>
             <form action="/delete" method="POST">
                 <button class="btn-delete">삭제</button>
             </form>
         </div>
-
         <div>
             <h2>회원 목록 조회</h2>
             <% for(var i = 0; i < clients.length; i++){ %> 
                 <%= clients[i].name %>
                 <%= clients[i].phone %>
+                <form action="/delete/<%= clients[i]._id%>" method="get">
+                    <button type="submit">delete</button>
+                </form>
                 <br>
             <% } %>
         </div>
