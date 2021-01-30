@@ -1,0 +1,51 @@
+//- <!DOCTYPE html>
+//- <html lang="en">
+//- <head>
+//-     <meta charset="UTF-8">
+//-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//-     <title>Login</title>
+//- </head>
+//- <body>
+//-     <div class="container">
+//-         <div>
+//-             <input type="email" placeholder="email을 입력해주세요" id="email"/>
+//-         </div>
+
+//-         <div>
+//-             <input type="password" placeholder="비밀번호를 입력해주세요" id="pw" value="">
+//-         </div>
+
+//-         <div>
+//-             <input type="button"  value="로그인">
+//-         </div>
+//-     </div>
+//-     <script src="../app.js"></script>
+//- </body>
+//- </html>
+
+html
+    head
+        title= title
+    body
+        h1= message
+
+        div
+            input#id(
+                type="email"
+                placeholder="이메일을 입력하세요"
+                value=""
+            )
+        div
+            input#pwd(
+                type="password"
+                placeholder="비밀번호를 입력하세요"
+                value=""
+            )
+        div
+            input.btn-login(
+                type="button"
+                value="로그인"
+            )
+
+        script(type="module" src="../js/event.js").
+        
