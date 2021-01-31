@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="/app/logout_process" method="GET">
+            <input type="submit" value="logout"/>
+        </form>
+    </div>
+
+    <h1> Todo List </h1>
+
+    <div id="todo-list">
+        <div id="Todo">
+            <h2> Todo </h2>
+        </div>
+
+        <div id="Doing">
+            <h2> Doing </h2>
+        </div>
+
+
+        <div id="Done">
+            <h2> Done </h2>
+        </div>
+
+        <br><br>
+        
+        <%= userTodo %>
+        <button id="addBtn">Add Task</button>
+        <button id="deleteBtn">Delete Task</button>
+        <button id="changeBtn">Change Task</button>
+    </div>
+
+    <script src="../public/js/todo.js"></script>
+
+</body>
+</html>
