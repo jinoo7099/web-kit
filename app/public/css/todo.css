@@ -1,0 +1,23 @@
+#todo-list {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  max-width: 800;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.btn-logout {
+  width: 100px;
+  height: 70px;
+}
