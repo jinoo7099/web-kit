@@ -33,16 +33,17 @@ const render = () => {
 function loginPage() {
   return `<h1>로그인</h1>
               <div class="login-input-wrap">
-                  <input type="text" name="id" placeholder="email">
+                  <input class="input-id" type="text" name="id" placeholder="email">
               </div>
   
               <div class="login-input-wrap password-wrap">
-                  <input type="password" name="pw" placeholder="password">
+                  <input class="input-pwd" type="password" name="pw" placeholder="password">
               </div>
   
               <div class="login-button-wrap">
-                  <button class="test">login</button>
+                  <button class="login-btn">login</button>
               </div>
+
               `;
 }
 
