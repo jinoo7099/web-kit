@@ -3,7 +3,8 @@
 
   const routes = {
     // hash: url
-    "": "/login", //login
+    "": "/login", //login\
+    register: "/register",
     project: "/project", //select project
     test: "/test",
   };
