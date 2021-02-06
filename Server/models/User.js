@@ -39,6 +39,7 @@ userSchema.methods.generateToken = function (cb) {
   });
 };
 
+//복호화
 userSchema.statics.findByToken = function (token, cb) {
   const user = this;
 
@@ -47,8 +48,8 @@ userSchema.statics.findByToken = function (token, cb) {
     user.findOne({ _id: decoded, token: token }, function (err, userInfo) {
       if (err) {
         return cb(err);
-        cb(null, userInfo);
       }
+      cb(null, userInfo);
     });
   });
 };

@@ -19,30 +19,18 @@ function loginProcess(e) {
     return;
   }
 
-  fetch("http://127.0.0.1:3000/test", {
+  fetch("http://127.0.0.1:3000/api/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      id: id,
-      pwd: pwd,
+      email: id,
+      password: pwd,
     }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      console.log(response.json());
+    })
     .catch((err) => console.log(err));
 }
-
-// fetch('/todo/delete', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       name: name,
-//       date: date,
-//       state: state,
-//     }),
-//   })
-//     .then((response) => console.log(response))
-//     .catch((err) => console.log(err));
