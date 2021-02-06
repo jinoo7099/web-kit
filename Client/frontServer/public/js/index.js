@@ -8,7 +8,6 @@ const routes = {
 const render = () => {
   try {
     const root = document.querySelector(".app-root");
-    console.log("change");
     const hash = location.hash.replace("#", "");
     const url = routes[hash];
     if (url === "/login") {
@@ -42,6 +41,9 @@ function loginPage() {
   
               <div class="login-button-wrap">
                   <button class="login-btn">login</button>
+              </div>
+              <div class="register-button-wrap">
+                  <button class="register-btn">register</button>
               </div>
 
               `;

@@ -6,6 +6,7 @@ const { auth } = require("../middleware/auth");
 router.post("/register", (req, res) => {
   const user = new User(req.body);
 
+  console.log(req.body);
   user.save((err, userInfo) => {
     //DB에 저장
     if (err) return res.json({ success: false, err });
@@ -18,7 +19,6 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res) => {
   User.findOne({ email: req.body.email }, (err, user) => {
     if (!user) {
-      console.log("1");
       return res.json({
         loginSuccess: false,
         message: "Not Find User",
@@ -26,7 +26,6 @@ router.post("/login", (req, res) => {
     }
 
     if (req.body.password !== user.password) {
-      console.log("2");
       return res.json({
         loginSuccess: false,
         message: "incorrect password",
@@ -36,10 +35,10 @@ router.post("/login", (req, res) => {
       if (err) {
         return res.status(400).send(err);
       }
-      // 토큰 저장
+      // 토큰을 쿠키에 저장
       console.log("3");
 
-      return res
+      res
         .cookie("x_auth", user.token)
         .status(200)
         .json({ loginSuccess: true, userId: user._id });

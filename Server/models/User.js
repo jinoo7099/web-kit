@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
 const userSchema = mongoose.Schema({
-  name: {
-    type: String,
-    maxlength: 50,
-  },
   email: {
     type: String,
     trim: true, //공백 삭제
