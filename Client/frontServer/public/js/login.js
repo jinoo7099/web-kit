@@ -29,8 +29,13 @@ function loginProcess(e) {
       password: pwd,
     }),
   })
-    .then((response) => {
-      console.log(response.json());
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.loginSuccess === false) {
+        window.location.reload();
+      } else {
+        location.href = "/#project";
+      }
     })
     .catch((err) => console.log(err));
 }

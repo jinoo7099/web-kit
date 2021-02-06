@@ -8,7 +8,7 @@ const routes = {
 const render = () => {
   try {
     const root = document.querySelector(".app-root");
-
+    console.log("change");
     const hash = location.hash.replace("#", "");
     const url = routes[hash];
     if (url === "/login") {
