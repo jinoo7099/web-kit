@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Plan } = require("../models/plan");
-const { auth } = require("../middleware/auth");
+const { User } = require("../models/User");
 
 router.post("/create", (req, res) => {
   const plan = new Plan(req.body);
@@ -12,6 +12,16 @@ router.post("/create", (req, res) => {
     if (err) return res.json({ success: false, err });
     return res.status(200).json({
       success: true,
+    });
+  });
+});
+
+router.post("/", (req, res) => {
+  const token = req.cookies.x_auth;
+  const data = [];
+  User.findOne({ token: token }, function (err, user) {
+    Plan.find({ email: user.email }, function (err, plan) {
+      res.json(plan);
     });
   });
 });

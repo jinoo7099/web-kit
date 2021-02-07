@@ -11,6 +11,10 @@ const planSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  state: {
+    type: String,
+    default: "private",
+  },
 });
 
 const Plan = mongoose.model("Plan", planSchema);

@@ -1,7 +1,3 @@
-// $(".test").on("click", () => {
-//   console.log("button");
-// });
-
 document.addEventListener("click", (e) => {
   switch (e.target.className) {
     case "login-btn":
@@ -37,7 +33,7 @@ function loginProcess() {
         window.location.reload();
         alert("다시 입력해주세요..");
       } else {
-        location.href = "/#project";
+        location.href = "/#plan";
       }
     })
     .catch((err) => console.log(err));
@@ -64,11 +60,10 @@ function registerProcess() {
     .then((data) => {
       if (data.success === false) {
         alert("회원가입 실패");
-        return;
+      } else {
+        window.location.reload();
+        alert("회원가입 완료!");
       }
-
-      window.location.reload();
-      alert("회원가입 완료!");
     })
     .catch((err) => console.log(err));
 }
