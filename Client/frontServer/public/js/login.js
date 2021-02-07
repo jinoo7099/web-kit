@@ -28,9 +28,11 @@ function loginProcess() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(user),
+    credentials: "include",
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       if (data.loginSuccess === false) {
         window.location.reload();
         alert("다시 입력해주세요..");
@@ -62,6 +64,7 @@ function registerProcess() {
     .then((data) => {
       if (data.success === false) {
         alert("회원가입 실패");
+        return;
       }
 
       window.location.reload();

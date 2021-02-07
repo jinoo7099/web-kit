@@ -50,6 +50,17 @@ function loginPage() {
 }
 
 function proejctPage() {
+  fetch("http://127.0.0.1:3000/api/users/auth", {
+    method: "POST",
+    credentials: "include",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.isAuth) {
+        location.href = "/#";
+      }
+    });
+
   return `<h2>Project</h2>`;
 }
 

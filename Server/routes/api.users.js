@@ -36,8 +36,6 @@ router.post("/login", (req, res) => {
         return res.status(400).send(err);
       }
       // 토큰을 쿠키에 저장
-      console.log("3");
-
       res
         .cookie("x_auth", user.token)
         .status(200)
@@ -46,9 +44,10 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/auth", auth, (req, res) => {
+router.post("/auth", auth, (req, res) => {
   //auth  미들웨어 -> 콜백가기전에 중간에서 처리
   res.status(200).json({
+    isAuth: true,
     _id: req.user._id,
     email: req.user.email,
   });
