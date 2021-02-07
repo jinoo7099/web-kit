@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const config = require("./config/dev");
 const apiUserRouter = require("./routes/api.users");
 const apiPlanRouter = require("./routes/api.plan");
+const apiDetailRouter = require("./routes/api.detail");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
@@ -34,4 +35,5 @@ app.get("/", (req, res) => res.send("hello world!"));
 
 app.use("/api/users", apiUserRouter);
 app.use("/api/plan", apiPlanRouter);
+app.use("api/detail", apiDetailRouter);
 app.listen(port, () => console.log("connect server"));

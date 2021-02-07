@@ -1,5 +1,6 @@
 # Day-13
 
-## 필요사항
+## todo
 
-- 처음부터 #project 화면 안넘어가도록 토큰 이용
+- 리펙토링
+- private, public 분리

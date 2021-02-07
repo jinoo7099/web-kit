@@ -4,9 +4,10 @@ const planSchema = mongoose.Schema({
   name: {
     type: String,
   },
-  email: {
+  master: {
     type: String,
   },
+  users: [String],
   date: {
     type: Date,
     default: Date.now,
@@ -15,6 +16,7 @@ const planSchema = mongoose.Schema({
     type: String,
     default: "private",
   },
+  column: [String],
 });
 
 const Plan = mongoose.model("Plan", planSchema);

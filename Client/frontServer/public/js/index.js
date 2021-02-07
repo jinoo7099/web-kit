@@ -1,9 +1,11 @@
 import { planPage } from "../controller/plan.controller.js";
 import { loginPage } from "../controller/login.controller.js";
+import { detailPage } from "../controller/detail.controller.js";
 const routes = {
   // hash: url
   "": "/login", //login
   plan: "/plan", //select project
+  detail: "/detail", //상세 페이지
 };
 
 const render = () => {
@@ -17,6 +19,9 @@ const render = () => {
         break;
       case "/plan":
         planPage();
+        break;
+      case "/detail":
+        detailPage();
         break;
     }
   } catch (err) {
