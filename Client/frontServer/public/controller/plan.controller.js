@@ -13,11 +13,7 @@ $(".app-root").on("click", ".create-btn", function (event) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name: planName }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      renderPlanPage(data);
-    });
+  }).then(planPage());
 });
 
 // Model

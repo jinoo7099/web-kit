@@ -9,7 +9,11 @@ router.post("/create", (req, res) => {
 
   const planName = req.body.name;
   User.findOne({ token: token }, function (err, user) {
-    const plan = new Plan({ master: user.email, name: planName });
+    const plan = new Plan({
+      master: user.email,
+      name: planName,
+      users: [user.email],
+    });
     plan.save((err, plan) => {
       if (err) return res.json({ success: false, err });
       return res.status(200).json({
