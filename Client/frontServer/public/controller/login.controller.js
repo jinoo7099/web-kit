@@ -73,22 +73,34 @@ function registerProcess() {
 }
 
 function loginPage() {
-  $(".app-root").html(`<h1>로그인</h1>
-    <div class="login-input-wrap">
+  $(".app-root").html(`
+  <div class="js-login-container">
+    <div class="js-login-header">
+      <h1>Sign in</h1>
+    </div>
+
+    <div class="js-login-section">
+
+      <label>Username or email address</label>
+      <div class="login-input-wrap">
         <input class="input-id" type="text" name="id" placeholder="email">
-    </div>
+      </div>
 
-    <div class="login-input-wrap password-wrap">
-        <input class="input-pwd" type="password" name="pw" placeholder="password">
-    </div>
+      <label>Password</label>
+      <div class="login-input-wrap password-wrap">
+          <input class="input-pwd" type="password" name="pw" placeholder="password">
+      </div>
 
-    <div class="login-button-wrap">
-        <button class="login-btn">login</button>
-    </div>
-    <div class="register-button-wrap">
-        <button class="register-btn">register</button>
-    </div>
+      <div class="login-button-wrap">
+          <button class="login-btn">login</button>
+      </div>
 
+      <div class="register-button-wrap">
+          <button class="register-btn">register</button>
+      </div>
+    </div>
+    
+  </div>
     `);
 }
 

@@ -32,17 +32,38 @@ function requestDetailPageData(reqPlanData) {
 
 function renderDetailPage(resPlanData) {
   console.log(resPlanData);
-  $(".app-root").html(`<section class="detail-main-container">
-  <div class="detail-column">
+  $(".app-root").html(`<section class="js-detail-main-container">
+  <div class="js-detail-column">
 
   </div>
 
-  <div class="new-column-container">
-    <div class="new-column-button">
+  <div class="js-new-column-container">
+    <div class="js-new-column-button">
       <button class="new-column">Add column</button>
     </div>
   </div>
-</section>`);
+</section>
+<div class="js-column-modal">
+    <div class="Box-header">
+        <h2>modal 창</h2>
+    </div>
+    <div> class="Box-body">
+        
+    </div>
+
+</div>
+`);
 }
+
+$(".app-root").on("click", ".create-btn", function (event) {
+  fetch("http://127.0.0.1:3000/api/plan/create", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name: planName }),
+  }).then(planPage());
+});
 
 export { detailPage };

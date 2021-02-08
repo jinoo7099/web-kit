@@ -1,0 +1,65 @@
+.js-login-container {
+  width: 340px;
+  height: 350px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.js-login-header {
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+  text-size-adjust: 100%;
+}
+
+.js-login-section {
+  background-color: rgb(246, 248, 250);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(234, 236, 239);
+  margin-top: 16px;
+  padding: 20px;
+}
+
+.js-login-section label {
+  margin-bottom: 7px;
+}
+
+.input-id,
+.input-pwd {
+  width: 266px;
+  height: 32px;
+  padding: 5px 12px;
+  border-width: 1px;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: rgb(255, 228, 232);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.login-btn {
+  background-color: rgb(46, 164, 79);
+  border-radius: 6px;
+  border-color: rgba(27, 31, 35, 0.15);
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  height: 32px;
+  color: rgb(255, 255, 255);
+  margin-top: 20px;
+  padding: 5px 16px;
+}
+.register-btn {
+  background-color: rgb(46, 164, 79);
+  border-radius: 6px;
+  border-color: rgba(27, 31, 35, 0.15);
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  height: 32px;
+  color: rgb(255, 255, 255);
+  margin-top: 10px;
+  padding: 5px 16px;
+}
