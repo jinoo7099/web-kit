@@ -3,6 +3,10 @@ const router = express.Router();
 const { Plan } = require("../models/plan");
 const { User } = require("../models/User");
 
+//
+//  /api/plan
+//
+
 router.post("/create", (req, res) => {
   const token = req.cookies.x_auth;
   // const plan = new Plan();
@@ -32,4 +36,12 @@ router.post("/", (req, res) => {
   });
 });
 
+router.post("/delete", (req, res) => {
+  Plan.remove(req.body, function (err, plan) {
+    if (err) {
+      throw err;
+    }
+    console.log("remove");
+  });
+});
 module.exports = router;

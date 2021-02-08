@@ -3,4 +3,6 @@
 ## todo
 
 - 리펙토링
-- private, public 분리
+- public 은 열람만가능 private는 수정가능
+- Plan delete
+-
