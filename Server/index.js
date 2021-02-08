@@ -35,5 +35,5 @@ app.get("/", (req, res) => res.send("hello world!"));
 
 app.use("/api/users", apiUserRouter);
 app.use("/api/plan", apiPlanRouter);
-app.use("api/detail", apiDetailRouter);
+app.use("/api/detail", apiDetailRouter);
 app.listen(port, () => console.log("connect server"));

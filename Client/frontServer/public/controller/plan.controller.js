@@ -1,6 +1,14 @@
+import { detailPage } from "./detail.controller.js";
 $(".app-root").on("click", ".project-btn", function (event) {
   event.preventDefault();
-  console.log(event.target.innerHTML);
+  const planName = $(event.target.parentElement)
+    .children(".project-btn")
+    .html();
+  const master = $(event.target.parentElement)
+    .children(".plan-span-master")
+    .html();
+
+  detailPage(planName, master);
 });
 
 $(".app-root").on("click", ".create-btn", function (event) {

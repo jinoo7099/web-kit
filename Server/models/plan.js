@@ -16,7 +16,11 @@ const planSchema = mongoose.Schema({
     type: String,
     default: "private",
   },
-  column: [String],
+  column: [{ name: { type: String }, task: [] }],
+});
+
+const taskSchema = mongoose.Schema({
+  task: {},
 });
 
 const Plan = mongoose.model("Plan", planSchema);
