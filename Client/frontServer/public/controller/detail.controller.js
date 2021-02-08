@@ -10,8 +10,6 @@ function detailPage(plan, master) {
         location.href = "/#";
         throw new Error("인증 실패");
       }
-      $(".app-root").html(`<h2> Plan </h2>`);
-
       requestDetailPageData(reqPlanData);
     })
     .catch((err) => console.log(err));
@@ -34,6 +32,17 @@ function requestDetailPageData(reqPlanData) {
 
 function renderDetailPage(resPlanData) {
   console.log(resPlanData);
+  $(".app-root").html(`<section class="detail-main-container">
+  <div class="detail-column">
+
+  </div>
+
+  <div class="new-column-container">
+    <div class="new-column-button">
+      <button class="new-column">Add column</button>
+    </div>
+  </div>
+</section>`);
 }
 
 export { detailPage };

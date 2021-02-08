@@ -20,9 +20,6 @@ const render = () => {
       case "/plan":
         planPage();
         break;
-      case "/detail":
-        detailPage();
-        break;
     }
   } catch (err) {
     console.error(err);
