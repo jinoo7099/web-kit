@@ -8,7 +8,7 @@ const routes = {
   detail: "/detail", //상세 페이지
 };
 
-const render = () => {
+const render = (event) => {
   try {
     const hash = location.hash.replace("#", "");
     const url = routes[hash];
@@ -20,6 +20,9 @@ const render = () => {
       case "/plan":
         planPage();
         break;
+      case "/detail":
+        detailPage();
+        break;
     }
   } catch (err) {
     console.error(err);
@@ -28,4 +31,5 @@ const render = () => {
 
 window.addEventListener("hashchange", render); //hash 바뀔때
 window.addEventListener("DOMContentLoaded", render); //새로고침 일때
+
 // })();

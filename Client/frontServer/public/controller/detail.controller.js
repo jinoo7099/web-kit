@@ -1,5 +1,7 @@
-function detailPage(plan, master) {
-  const reqPlanData = { name: plan, master: master };
+function detailPage() {
+  const reqPlanData = JSON.parse(sessionStorage.getItem("plan"));
+  sessionStorage.removeItem("plan");
+
   fetch("http://127.0.0.1:3000/api/users/auth", {
     method: "POST",
     credentials: "include",
@@ -10,6 +12,7 @@ function detailPage(plan, master) {
         location.href = "/#";
         throw new Error("인증 실패");
       }
+
       requestDetailPageData(reqPlanData);
     })
     .catch((err) => console.log(err));
@@ -32,26 +35,26 @@ function requestDetailPageData(reqPlanData) {
 
 function renderDetailPage(resPlanData) {
   console.log(resPlanData);
-  $(".app-root").html(`<section class="js-detail-main-container">
-  <div class="js-detail-column">
+  $(".app-root").html(`
+  <section class="js-detail-main-container">
+    <div class="js-detail-column">
 
-  </div>
-
-  <div class="js-new-column-container">
-    <div class="js-new-column-button">
-      <button class="new-column">Add column</button>
     </div>
-  </div>
-</section>
-<div class="js-column-modal">
+
+    <div class="js-new-column-container">
+     <div class="js-new-column-button">
+        <button class="new-column">Add column</button>
+     </div>
+    </div>
+  </section>
+  <div class="js-column-modal">
     <div class="Box-header">
         <h2>modal 창</h2>
     </div>
     <div> class="Box-body">
         
     </div>
-
-</div>
+  </div>
 `);
 }
 

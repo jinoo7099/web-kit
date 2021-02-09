@@ -3,11 +3,16 @@ import { detailPage } from "./detail.controller.js";
 $(".app-root").on("click", ".plan-btn", function (event) {
   event.preventDefault();
   const planName = $(event.target.parentElement).children(".plan-btn").html();
-  const master = $(event.target.parentElement)
+  const master = $(event.target.parentElement.parentElement)
+    .children(".plan-description")
     .children(".plan-span-master")
     .html();
 
-  detailPage(planName, master);
+  const data = { name: planName, master: master };
+
+  sessionStorage.setItem("plan", JSON.stringify(data));
+  location.href = "/#detail";
+  // detailPage(planName, master);
 });
 
 $(".app-root").on("click", ".create-btn", function (event) {
@@ -142,4 +147,5 @@ function getFormatDate(date) {
   formatDate += date.slice(11, 19);
   return formatDate;
 }
+
 export { planPage };
