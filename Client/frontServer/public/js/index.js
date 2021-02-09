@@ -1,6 +1,8 @@
-import { planPage } from "../controller/plan.controller.js";
-import { loginPage } from "../controller/login.controller.js";
+// import { planPage } from "../controller/plan.controller.js";
+// import { loginPage } from "../controller/login.controller.js";
 import { detailPage } from "../controller/detail.controller.js";
+import { renderLoginPage } from "../controller/login.controller.js";
+import { renderPlanPage } from "../model/plan.controller.js";
 const routes = {
   // hash: url
   "": "/login", //login
@@ -12,13 +14,13 @@ const render = (event) => {
   try {
     const hash = location.hash.replace("#", "");
     const url = routes[hash];
-
     switch (url) {
       case "/login":
-        loginPage();
+        // loginPage();
+        renderLoginPage();
         break;
       case "/plan":
-        planPage();
+        renderPlanPage();
         break;
       case "/detail":
         detailPage();

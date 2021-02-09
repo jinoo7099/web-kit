@@ -1,7 +1,4 @@
 function detailPage() {
-  const reqPlanData = JSON.parse(sessionStorage.getItem("plan"));
-  sessionStorage.removeItem("plan");
-
   fetch("http://127.0.0.1:3000/api/users/auth", {
     method: "POST",
     credentials: "include",
@@ -12,7 +9,8 @@ function detailPage() {
         location.href = "/#";
         throw new Error("인증 실패");
       }
-
+      const reqPlanData = JSON.parse(sessionStorage.getItem("plan"));
+      sessionStorage.removeItem("plan");
       requestDetailPageData(reqPlanData);
     })
     .catch((err) => console.log(err));

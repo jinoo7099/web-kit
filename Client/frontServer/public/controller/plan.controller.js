@@ -85,12 +85,12 @@ function planPage() {
         throw new Error("인증 실패");
       }
 
-      requestPlanPageData(data);
+      requestPlanPageData();
     })
     .catch((err) => console.log(err));
 }
 
-function requestPlanPageData(data) {
+function requestPlanPageData() {
   fetch("http://127.0.0.1:3000/api/plan", {
     method: "POST",
     credentials: "include",
