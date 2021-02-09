@@ -1,0 +1,94 @@
+.plan-main-container {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.plan-header {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.input-plan {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #000;
+  background: none;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+}
+
+.create-btn {
+  margin: 10px 0 20px 0;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(36, 41, 46);
+  font-size: 16px;
+  line-height: 30px;
+  width: 60px;
+  height: 30px;
+  border-width: 1px;
+  outline: 0;
+  border-radius: 6px;
+}
+
+.plan-header-title {
+  text-align: center;
+}
+.plan-results-container {
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(225, 228, 232);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+}
+
+.plan-result {
+  padding: 16px 40px 16px 16px;
+  position: relative;
+  margin-top: -1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(225, 228, 232);
+  display: flex;
+}
+
+.plan-title {
+  display: block;
+  float: left;
+  padding-right: 8px;
+  width: 332.5px;
+  line-height: 20px;
+}
+
+.plan-description {
+  width: 332.5px;
+}
+
+.plan-btn {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(36, 41, 46);
+  font-size: 16px;
+  line-height: 30px;
+  width: 200px;
+  height: 50px;
+  border-width: 1px;
+  outline: 0;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(36, 41, 46);
+  font-size: 16px;
+  line-height: 30px;
+  width: 60px;
+  height: 30px;
+  border-width: 1px;
+  outline: 0;
+  border-radius: 6px;
+}

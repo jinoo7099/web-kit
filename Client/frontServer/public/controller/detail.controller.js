@@ -55,15 +55,15 @@ function renderDetailPage(resPlanData) {
 `);
 }
 
-$(".app-root").on("click", ".create-btn", function (event) {
-  fetch("http://127.0.0.1:3000/api/plan/create", {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name: planName }),
-  }).then(planPage());
-});
+// $(".app-root").on("click", ".create-btn", function (event) {
+//   fetch("http://127.0.0.1:3000/api/plan/create", {
+//     method: "POST",
+//     credentials: "include",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ name: planName }),
+//   }).then(planPage());
+// });
 
 export { detailPage };

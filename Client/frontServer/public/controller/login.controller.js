@@ -18,7 +18,10 @@ function loginProcess() {
     alert("아이디나 비밀번호를 입력해주세요.");
     return;
   }
-  fetch("http://127.0.0.1:3000/api/users/login", {
+
+  const apiURL = "http://127.0.0.1:3000/api/users/login";
+
+  fetch(apiURL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +31,6 @@ function loginProcess() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (data.loginSuccess === false) {
         // window.location.reload();
         $(".input-id").val(null);
@@ -52,7 +54,9 @@ function registerProcess() {
     return;
   }
 
-  fetch("http://127.0.0.1:3000/api/users/register", {
+  const apiURL = "http://127.0.0.1:3000/api/users/register";
+
+  fetch(apiURL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

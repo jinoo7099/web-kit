@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Plan } = require("../models/plan");
 const { User } = require("../models/User");
+const moment = require("moment");
 
 //
 //  /api/plan
@@ -37,6 +38,7 @@ router.post("/", (req, res) => {
 });
 
 router.post("/delete", (req, res) => {
+  console.log(req.body);
   Plan.remove(req.body, function (err, plan) {
     if (err) {
       throw err;

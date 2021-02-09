@@ -1,9 +1,8 @@
 import { detailPage } from "./detail.controller.js";
-$(".app-root").on("click", ".project-btn", function (event) {
+
+$(".app-root").on("click", ".plan-btn", function (event) {
   event.preventDefault();
-  const planName = $(event.target.parentElement)
-    .children(".project-btn")
-    .html();
+  const planName = $(event.target.parentElement).children(".plan-btn").html();
   const master = $(event.target.parentElement)
     .children(".plan-span-master")
     .html();
@@ -25,7 +24,16 @@ $(".app-root").on("click", ".create-btn", function (event) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name: planName }),
-  }).then(planPage());
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.success === false) {
+        throw new Error("failed plan create");
+      }
+
+      planPage();
+    })
+    .catch(console.log);
 });
 
 $(".app-root").on("click", ".delete-btn", function (event) {
@@ -43,12 +51,19 @@ $(".app-root").on("click", ".delete-btn", function (event) {
 });
 
 function getDeletedPlan(event) {
-  const name = $(event.target.parentElement).children(".project-btn").html();
+  console.log(event.target.parentElement);
+  const name = $(event.target.parentElement)
+    .children(".plan-title")
+    .children(".plan-btn")
+    .html();
+
   const master = $(event.target.parentElement)
+    .children(".plan-description")
     .children(".plan-span-master")
     .html();
 
   const deletedPlan = { name: name, master: master };
+  console.log(deletedPlan);
   return deletedPlan;
 }
 
@@ -84,21 +99,47 @@ function requestPlanPageData(data) {
 
 //view
 function renderPlanPage(data) {
-  $(".app-root").html(`<h2> Prdasdasoject </h2>
+  $(".app-root").html(`
+    <header class="plan-header">
+      <h2 class="plan-header-title"> Select Plan </h2>
       <div class="create-input-wrap">
-      <input class="input-plan" type="text" name="plan" placeholder="plan">
+        <input class="input-plan" type="text" name="plan" placeholder="plan">
       </div>
-      <button class="create-btn">create</button>`);
+      <button class="create-btn">create</button>
+    </header>
+    <section class="plan-main-container">
+      <div class="plan-results-container">
+
+      </div>
+    </section>
+    `);
 
   for (let i = 0; i < data.length; i++) {
-    $(".app-root").append(`<div class="project">
-        <button class="project-btn">${data[i].name}</button>
-        <button class="delete-btn">delete</button>
-        master : <span class="plan-span-master">${data[i].master}</span>
-        users : <span>${data[i].users}</span> 
-        <span>${data[i].date}</span>
-        <span>${data[i].state}</span>
-        </div>`);
+    $(".plan-results-container").append(`
+    <div class="plan-result">
+      <h5 class="plan-title">
+        <button class="plan-btn">${data[i].name}</button>
+        <div class="plan-date">
+          <span>생성일 : ${getFormatDate(data[i].date)}</span>
+        </div>
+      </h5>
+      <div class="plan-description">
+      master :  <span class="plan-span-master">${data[i].master}</span>
+        <p>users : ${data[i].users} </p> 
+        <p>${data[i].state} </p>
+      </div>
+      <button class="delete-btn">delete</button>
+    </div>
+    `);
   }
+}
+
+function getFormatDate(date) {
+  let formatDate = "";
+  console.log(date);
+  formatDate += date.slice(0, 10);
+  formatDate += " ";
+  formatDate += date.slice(11, 19);
+  return formatDate;
 }
 export { planPage };
