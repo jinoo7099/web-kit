@@ -3,6 +3,7 @@ const router = express.Router();
 const { Plan } = require("../models/plan");
 const { User } = require("../models/User");
 const moment = require("moment");
+const { response } = require("express");
 
 //
 //  /api/plan
@@ -19,10 +20,20 @@ router.post("/create", (req, res) => {
       name: planName,
       users: [user.email],
     });
-    plan.save((err, plan) => {
-      if (err) return res.json({ success: false, err });
-      return res.status(200).json({
-        success: true,
+
+    Plan.findOne({ name: planName, master: user.email }, function (err, user) {
+      if (user) {
+        return res.json({
+          success: false,
+          msg: "동일이름 존재",
+        });
+      }
+
+      plan.save((err, plan) => {
+        if (err) return res.json({ success: false, err });
+        return res.status(200).json({
+          success: true,
+        });
       });
     });
   });
