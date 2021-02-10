@@ -105,7 +105,6 @@ planView.prototype = {
 
 function getFormatDate(date) {
   let formatDate = "";
-  console.log(date);
   formatDate += date.slice(0, 10);
   formatDate += " ";
   formatDate += date.slice(11, 19);

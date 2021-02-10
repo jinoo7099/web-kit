@@ -25,3 +25,22 @@
   text-decoration-style: solid;
   text-decoration-thickness: auto;
 }
+.js-detail-main-container {
+  display: flex;
+}
+
+.js-detail-column {
+  display: flex;
+}
+
+.detail-column {
+  height: 715px;
+  color: rgb(36, 41, 46);
+  background-color: rgb(246, 248, 250);
+  border-width: 1px;
+  border-radius: 6px;
+  margin-right: 16px;
+  max-width: 355px;
+  min-width: 355px;
+  position: relative;
+}

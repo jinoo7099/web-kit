@@ -4,7 +4,7 @@ function planModel(data) {
 
 planModel.prototype = {
   isAuth: function () {
-    fetch("http://127.0.0.1:3000/api/users/auth", {
+    return fetch("http://127.0.0.1:3000/api/users/auth", {
       method: "POST",
       credentials: "include",
     })
@@ -14,19 +14,20 @@ planModel.prototype = {
           location.href = "/#";
           throw new Error("인증 실패");
         }
-        requestPlanPageData();
+
+        console.log("plan 인증 성공");
       })
       .catch((err) => console.log(err));
   },
 
-  requestPlanPageData: function (cb) {
-    fetch("http://127.0.0.1:3000/api/plan", {
+  requestPlanPageData: function () {
+    return fetch("http://127.0.0.1:3000/api/plan", {
       method: "POST",
       credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
-        cb(data);
+        return data;
       })
       .catch((err) => console.log(err));
   },

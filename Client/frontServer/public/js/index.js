@@ -1,8 +1,8 @@
 // import { planPage } from "../controller/plan.controller.js";
 // import { loginPage } from "../controller/login.controller.js";
-import { detailPage } from "../controller/detail.controller.js";
+import { renderDetailPage } from "../controller/detail.controller.js";
 import { renderLoginPage } from "../controller/login.controller.js";
-import { renderPlanPage } from "../model/plan.controller.js";
+import { renderPlanPage } from "../controller/plan.controller.js";
 const routes = {
   // hash: url
   "": "/login", //login
@@ -23,7 +23,7 @@ const render = (event) => {
         renderPlanPage();
         break;
       case "/detail":
-        detailPage();
+        renderDetailPage();
         break;
     }
   } catch (err) {
