@@ -23,14 +23,17 @@ $(".app-root").on("click", ".plan-btn", function (event) {
   // detailPage(planName, master);
 });
 
-$(".app-root").on("click", ".create-btn", function (event) {
+$(".app-root").on("click", ".create-btn", async function (event) {
   event.preventDefault();
+
   try {
     const model = new planModel();
     const view = new planView(".app-root");
 
     const planName = view.getCreateInputData();
-    model.createPlan(planName, view.displayPlanPage.bind(view));
+    // view.appendPlan(planName);
+    const data = await model.createPlan(planName);
+    view.appendPlan(data);
   } catch (error) {
     console.error(error);
   }

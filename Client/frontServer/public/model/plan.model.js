@@ -41,8 +41,8 @@ planModel.prototype = {
       body: JSON.stringify(deletedPlan),
     }).then((res) => console.log(res));
   },
-  createPlan: function (planName, cb) {
-    fetch("http://127.0.0.1:3000/api/plan/create", {
+  createPlan: function (planName) {
+    return fetch("http://127.0.0.1:3000/api/plan/create", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -55,7 +55,7 @@ planModel.prototype = {
         if (data.success === false) {
           throw new Error("failed plan create");
         }
-        this.requestPlanPageData(cb);
+        return data.plan;
       })
       .catch(console.log);
   },

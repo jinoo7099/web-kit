@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { Plan } = require("../models/plan");
 const { User } = require("../models/User");
-const moment = require("moment");
 const { response } = require("express");
 
 //
@@ -33,6 +32,7 @@ router.post("/create", (req, res) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).json({
           success: true,
+          plan: plan,
         });
       });
     });

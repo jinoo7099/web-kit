@@ -83,19 +83,19 @@ planView.prototype = {
     return planName;
   },
 
-  appendPlan: function () {
+  appendPlan: function (data) {
     $(".plan-results-container").append(`
     <div class="plan-result">
       <h5 class="plan-title">
-        <button class="plan-btn">${planName}</button>
+        <button class="plan-btn">${data.name}</button>
         <div class="plan-date">
-          <span>생성일 : sdfdf</span>
+          <span>생성일 : ${getFormatDate(data.date)}</span>
         </div>
       </h5>
       <div class="plan-description">
-      master :  <span class="plan-span-master">asdf</span>
-        <p>users : asd </p> 
-        <p>private </p>
+      master :  <span class="plan-span-master">${data.master}</span>
+        <p>users : ${data.users} </p> 
+        <p>${data.state} </p>
       </div>
       <button class="delete-btn">delete</button>
     </div>
