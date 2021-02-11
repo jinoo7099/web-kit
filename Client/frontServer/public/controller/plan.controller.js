@@ -18,7 +18,8 @@ $(".app-root").on("click", ".plan-btn", function (event) {
   const view = new planView(".app-root");
   const data = view.getPlanNameAndMaster(event);
 
-  sessionStorage.setItem("plan", JSON.stringify(data));
+  sessionStorage.setItem(`plan`, JSON.stringify(data));
+  console.log(data);
   location.href = "/#detail";
   // detailPage(planName, master);
 });
