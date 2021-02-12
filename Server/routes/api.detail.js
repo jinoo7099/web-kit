@@ -21,6 +21,7 @@ router.post('/column', (req, res) => {
     if (err) {
       req.json({ message: 'to create column failed' });
     }
+    console.log(result.column.indexOf({ name: req.body.title }));
     result.column.push({ name: req.body.title });
 
     result.save();

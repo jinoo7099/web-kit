@@ -35,8 +35,16 @@ detailView.prototype = {
           <h2>
             ${title}
           </h2>
-          <div class="js-delete-column-button">
-            <input class="delete-column-button" type="button" value="삭제" />
+          <div class="js-column-button">
+            <details class="details-reset">
+              <summary>
+                menu
+              </summary>
+              <detail-menu class="dropdown-menu" role="menu">
+                <button class="delete-column-button" role="menu"> Delete </button>
+                <button class="update-column-button" role="menu"> Update </button>
+              </detail>
+            </details>
           </div>
         </div>
         
@@ -53,10 +61,10 @@ detailView.prototype = {
       </div>
     `;
 
-    $(".js-detail-column").append(column);
+    $('.js-detail-column').append(column);
   },
   deleteColumn: function (event) {
-    $(event.target).parents(".detail-column").remove();
+    $(event.target).parents('.detail-column').remove();
   },
 };
 

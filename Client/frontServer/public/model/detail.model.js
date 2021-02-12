@@ -49,7 +49,8 @@ detailModel.prototype = {
   },
   deleteColumn: function (event) {
     const planData = JSON.parse(sessionStorage.getItem('plan'));
-    const columnName = event.target.parentNode.previousSibling.previousSibling.innerHTML;
+    const columnName = event.target.parentNode.parentNode.parentNode.previousSibling.previousSibling.innerHTML;
+    console.log(columnName);
     planData.column = columnName.trim();
     console.log(planData);
     fetch('http://127.0.0.1:3000/api/detail/delete', {

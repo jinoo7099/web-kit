@@ -1,13 +1,13 @@
-import { detailModel } from "../model/detail.model.js";
-import { detailView } from "../view/detail.view.js";
+import { detailModel } from '../model/detail.model.js';
+import { detailView } from '../view/detail.view.js';
 
 async function renderDetailPage() {
   try {
-    const view = new detailView(".app-root");
+    const view = new detailView('.app-root');
     const model = new detailModel();
 
     await model.isAuth();
-    const reqPlanData = JSON.parse(sessionStorage.getItem("plan"));
+    const reqPlanData = JSON.parse(sessionStorage.getItem('plan'));
     // sessionStorage.removeItem("plan");
     const data = await model.requestDetailPageData(reqPlanData);
     view.displayDetailPage(data);
@@ -16,17 +16,17 @@ async function renderDetailPage() {
   }
 }
 
-$(".app-root").on("click", ".new-column", function (event) {
+$('.app-root').on('click', '.new-column', function (event) {
   event.preventDefault();
   try {
-    const view = new detailView(".app-root");
+    const view = new detailView('.app-root');
     const model = new detailModel();
-    const title = prompt("이름을 입력해주세요.");
+    const title = prompt('이름을 입력해주세요.');
 
     if (!title) {
-      throw new Error("no column name");
+      throw new Error('no column name');
     }
-    const planData = JSON.parse(sessionStorage.getItem("plan"));
+    const planData = JSON.parse(sessionStorage.getItem('plan'));
     planData.title = title;
 
     view.addColumn(title);
@@ -39,25 +39,25 @@ $(".app-root").on("click", ".new-column", function (event) {
   // console.log(2);
 });
 
-$(".app-root").on("click", ".new-task-button", function (event) {
+$('.app-root').on('click', '.new-task-button', function (event) {
   event.preventDefault();
   try {
-    const view = new detailView(".app-root");
+    const view = new detailView('.app-root');
     const model = new detailModel();
 
-    const task = $(".task-name-input").val();
+    const task = $('.task-name-input').val();
 
     if (!task) {
-      throw new Error("no content in input");
+      alert('no content in input');
     }
   } catch (err) {
     console.log(err);
   }
 });
 
-$(".app-root").on("click", ".delete-column-button", function (event) {
+$('.app-root').on('click', '.delete-column-button', function (event) {
   event.preventDefault();
-  const view = new detailView(".app-root");
+  const view = new detailView('.app-root');
   const model = new detailModel();
 
   view.deleteColumn(event);
