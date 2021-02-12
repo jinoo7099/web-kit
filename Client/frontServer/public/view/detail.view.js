@@ -26,9 +26,11 @@ detailView.prototype = {
   },
   displayDetailPage: function (data) {
     this.el.innerHTML = this.getInitDetailPage();
-    data.column.forEach((el) => this.addColumn(el.name));
+    data.column.forEach((el) => {
+      this.addColumn(el.name, this.formatTask(el.task));
+    });
   },
-  addColumn: function (title) {
+  addColumn: function (title, task) {
     const column = `
       <div class='detail-column'>
         <div class="column-header">
@@ -55,16 +57,25 @@ detailView.prototype = {
           </div>
 
           <div class="js-task">
-
+            ${task}
           </div>
         </div>
       </div>
     `;
 
-    $('.js-detail-column').append(column);
+    $(".js-detail-column").append(column);
   },
   deleteColumn: function (event) {
-    $(event.target).parents('.detail-column').remove();
+    $(event.target).parents(".detail-column").remove();
+  },
+  addTask: function (task, event) {
+    const html = `<div class="task">${task}</div>`;
+    $(event.target).parent().next().append(html);
+  },
+  formatTask: function (task) {
+    let html;
+    task.forEach((el) => (html += `<div class="task">${el}</div>`));
+    return html;
   },
 };
 
