@@ -40,6 +40,7 @@ $(".app-root").on("click", ".new-column", function (event) {
 });
 
 $(".app-root").on("click", ".new-task-button", function (event) {
+  event.preventDefault();
   try {
     const view = new detailView(".app-root");
     const model = new detailModel();
@@ -54,4 +55,12 @@ $(".app-root").on("click", ".new-task-button", function (event) {
   }
 });
 
+$(".app-root").on("click", ".delete-column-button", function (event) {
+  event.preventDefault();
+  const view = new detailView(".app-root");
+  const model = new detailModel();
+
+  view.deleteColumn(event);
+  model.deleteColumn(event);
+});
 export { renderDetailPage };

@@ -42,5 +42,6 @@
   margin-right: 16px;
   max-width: 355px;
   min-width: 355px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }

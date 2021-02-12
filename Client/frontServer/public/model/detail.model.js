@@ -47,6 +47,24 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+  deleteColumn: function (event) {
+    console.log(
+      event.target.parentNode.previousSibling.previousSibling.innerHTML
+    );
+    console.log($(event.target).html());
+    // fetch("http://127.0.0.1:3000/api/detail/delete", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(planData),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((err) => console.log(err));
+  },
 };
 
 export { detailModel };
