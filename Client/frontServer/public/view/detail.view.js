@@ -44,7 +44,7 @@ detailView.prototype = {
               </summary>
               <detail-menu class="dropdown-menu" role="menu">
                 <button class="delete-column-button" role="menu"> Delete </button>
-                <button class="update-column-button" role="menu"> Update </button>
+                <button class="update-column-button" role="menu"> 사용자 추가 </button>
               </detail>
             </details>
           </div>
@@ -57,8 +57,6 @@ detailView.prototype = {
           </div>
 
           <div class="js-task">
-            
-              
               ${task}
           </div>
         </div>
@@ -73,10 +71,10 @@ detailView.prototype = {
   addTask: function (task, event) {
     const author = sessionStorage.getItem("User");
     const html = `
-    <div class="task">
+    <div class="task" draggable="true" id="${newID()}">
 
       <div class="task-title">
-      <span class="task-name">${task}</span></br>
+        <span class="task-name">${task}</span></br>
         <span>Added by ${author}</span>
       </div>
 
@@ -92,7 +90,7 @@ detailView.prototype = {
     task.forEach(
       (el) =>
         (html += `
-    <div class="task">
+    <div class="task" draggable="true" id="${newID()}">
 
       <div class="task-title">
         <span class="task-name">${el.name}</span></br>
@@ -112,6 +110,10 @@ detailView.prototype = {
     $(event.target).closest(".task").remove();
     console.log($(event.target).parents());
   },
+};
+
+var newID = function () {
+  return Math.random().toString(36).substr(2, 16);
 };
 
 export { detailView };

@@ -89,4 +89,16 @@ router.post("/task/delete", (req, res) => {
     }
   );
 });
+
+router.post("/user/create", (req, res) => {
+  const newUser = req.body.user;
+
+  Plan.findOne(
+    { name: req.body.name, master: req.body.master },
+    function (err, result) {
+      result.users.push(newUser);
+      result.save();
+    }
+  );
+});
 module.exports = router;

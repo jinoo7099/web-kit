@@ -43,6 +43,13 @@ $(".app-root").on("click", ".delete-column-button", function (event) {
   model.deleteColumn(event);
 });
 
+$(".app-root").on("click", ".update-column-button", function (event) {
+  event.preventDefault();
+  const model = new detailModel();
+
+  const newUser = prompt("추가할 유저를 입력해주세요.");
+  model.addNewUser(newUser);
+});
 $(".app-root").on("click", ".new-task-button", function (event) {
   event.preventDefault();
   const view = new detailView(".app-root");
@@ -67,4 +74,17 @@ $(".app-root").on("click", ".task-delete-button", function (event) {
   model.deleteTask(event);
 });
 
+document.addEventListener("dragstart", (ev) => {
+  ev.dataTransfer.setData("text", ev.target.id);
+});
+
+document.addEventListener("dragover", (ev) => {
+  ev.preventDefault();
+});
+
+document.addEventListener("drop", (ev) => {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+});
 export { renderDetailPage };

@@ -113,6 +113,23 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+  addNewUser: function (user) {
+    const planData = JSON.parse(sessionStorage.getItem("plan"));
+    planData.user = user;
+
+    fetch("http://127.0.0.1:3000/api/detail/user/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(planData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  },
 };
 
 export { detailModel };
