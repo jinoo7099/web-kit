@@ -8,10 +8,6 @@ async function renderPlanPage() {
     await model.isAuth(); // 페이지 접속 전 인증
     const data = await model.requestPlanPageData();
 
-    data.forEach((el) => {
-      sessionStorage.setItem(`${el._id}`, JSON.stringify(el));
-    });
-
     view.displayPlanPage(data);
   } catch (error) {
     console.error(error);
@@ -21,7 +17,7 @@ async function renderPlanPage() {
 $(".app-root").on("click", ".plan-btn", function (event) {
   event.preventDefault();
   const view = new planView(".app-root");
-  const data = view.getPlanNameAndMaster(event);
+  const data = view.getPlan(event);
 
   sessionStorage.setItem(`plan`, JSON.stringify(data));
   location.href = "/#detail";

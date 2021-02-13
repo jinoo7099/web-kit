@@ -13,6 +13,8 @@ detailView.prototype = {
           <div class="js-new-column-container">
            <div class="js-new-column-button">
               <button class="new-column">Add column</button>
+              <button class="update-user-button"> 사용자 추가 </button>
+              <button class="update-state-button"> 상태바꾸기 </button>
            </div>
           </div>
 
@@ -44,7 +46,6 @@ detailView.prototype = {
               </summary>
               <detail-menu class="dropdown-menu" role="menu">
                 <button class="delete-column-button" role="menu"> Delete </button>
-                <button class="update-column-button" role="menu"> 사용자 추가 </button>
               </detail>
             </details>
           </div>

@@ -9,7 +9,7 @@
   height: 103px;
 }
 
-.new-column {
+.js-new-column-button button {
   width: 315px;
   height: 103px;
   background-color: rgb(255, 255, 255);
@@ -25,6 +25,7 @@
   text-decoration-style: solid;
   text-decoration-thickness: auto;
 }
+
 .js-detail-main-container {
   display: flex;
   margin-top: 50px;
@@ -60,6 +61,8 @@
 }
 
 .dropdown-menu {
+  display: flex;
+  flex-direction: column;
   background-clip: padding-box;
   padding: 8px 0;
   background-color: rgb(255, 255, 255);
@@ -71,6 +74,21 @@
   min-width: 180px;
 }
 
+.dropdown-menu button {
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgb(36, 41, 46);
+  align-items: flex-start;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  width: 178px;
+  text-size-adjust: 100%;
+  border-width: 0px;
+  cursor: pointer;
+  height: 20px;
+  font-size: 15px;
+  padding: 4px 8px 4px 16px;
+  text-align: left;
+}
 .task {
   display: flex;
   width: 90%;

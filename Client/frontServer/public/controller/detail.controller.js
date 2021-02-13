@@ -43,12 +43,18 @@ $(".app-root").on("click", ".delete-column-button", function (event) {
   model.deleteColumn(event);
 });
 
-$(".app-root").on("click", ".update-column-button", function (event) {
+$(".app-root").on("click", ".update-user-button", function (event) {
   event.preventDefault();
   const model = new detailModel();
 
+  const planData = JSON.parse(sessionStorage.getItem("plan"));
+  if (planData.state === "private") {
+    alert("private이므로 사용자 추가 안됨");
+    return;
+  }
+
   const newUser = prompt("추가할 유저를 입력해주세요.");
-  model.addNewUser(newUser);
+  model.addNewUser(newUser, planData);
 });
 $(".app-root").on("click", ".new-task-button", function (event) {
   event.preventDefault();
@@ -107,5 +113,11 @@ document.addEventListener("drop", (ev) => {
   const columnName = data.column;
   model.addTask(taskName, ev);
   model.deleteTask(ev, columnName, taskName);
+});
+
+$(".app-root").on("click", ".update-state-button", function (ev) {
+  const model = new detailModel();
+
+  model.changeState();
 });
 export { renderDetailPage };

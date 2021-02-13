@@ -33,7 +33,7 @@ planView.prototype = {
             <div class="plan-description">
             master :  <span class="plan-span-master">${data[i].master}</span>
               <p>users : ${data[i].users} </p> 
-              <p>${data[i].state} </p>
+              <p class="plan-state">${data[i].state} </p>
             </div>
             <button class="delete-btn">delete</button>
           </div>
@@ -46,14 +46,17 @@ planView.prototype = {
     this.setPlan(data);
   },
 
-  getPlanNameAndMaster: function (event) {
+  getPlan: function (event) {
     const planName = $(event.target.parentElement).children(".plan-btn").html();
     const master = $(event.target.parentElement.parentElement)
       .children(".plan-description")
       .children(".plan-span-master")
       .html();
-
-    const data = { name: planName, master: master };
+    const state = $(event.target.parentElement.parentElement)
+      .find(".plan-state")
+      .text()
+      .trim();
+    const data = { name: planName, master: master, state: state };
     return data;
   },
 

@@ -119,8 +119,7 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
-  addNewUser: function (user) {
-    const planData = JSON.parse(sessionStorage.getItem("plan"));
+  addNewUser: function (user, planData) {
     planData.user = user;
 
     fetch("http://127.0.0.1:3000/api/detail/user/create", {
@@ -133,6 +132,29 @@ detailModel.prototype = {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+      })
+      .catch((err) => console.log(err));
+  },
+  changeState: function () {
+    const data = JSON.parse(sessionStorage.getItem("plan"));
+    if (data.state === "private") {
+      data.state = "public";
+    } else {
+      data.state = "private";
+    }
+    sessionStorage.setItem("plan", JSON.stringify(data));
+
+    fetch("http://127.0.0.1:3000/api/detail/state/change", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        alert(`${data.state}로 변경 완료`);
       })
       .catch((err) => console.log(err));
   },

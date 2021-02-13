@@ -105,4 +105,20 @@ router.post("/user/create", (req, res) => {
     }
   );
 });
+
+router.post("/state/change", (req, res) => {
+  const state = req.body.state;
+  Plan.findOne(
+    { name: req.body.name, master: req.body.master },
+    function (err, result) {
+      result.state = state;
+      result.save();
+      res.send({
+        success: true,
+        msg: "state change completed",
+        state: result.state,
+      });
+    }
+  );
+});
 module.exports = router;
