@@ -54,9 +54,8 @@ detailModel.prototype = {
     const columnName =
       event.target.parentNode.parentNode.parentNode.previousSibling
         .previousSibling.innerHTML;
-    console.log(columnName);
     planData.column = columnName.trim();
-    console.log(planData);
+
     fetch("http://127.0.0.1:3000/api/detail/column/delete", {
       method: "POST",
       headers: {
@@ -72,6 +71,7 @@ detailModel.prototype = {
   },
   addTask: function (task, event) {
     const taskData = JSON.parse(sessionStorage.getItem("plan"));
+    const author = sessionStorage.getItem("User");
     const columnName = $(event.target)
       .closest(".detail-column")
       .find("h2")
@@ -79,12 +79,33 @@ detailModel.prototype = {
       .trim();
     taskData.task = task;
     taskData.column = columnName;
+    taskData.author = author;
+
     fetch("http://127.0.0.1:3000/api/detail/task/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(taskData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  },
+  deleteTask: function (event) {
+    const deletedData = JSON.parse(sessionStorage.getItem("plan"));
+    const taskTitle = $(event.target).closest(".task").find("span").html();
+
+    deletedData.task = taskTitle;
+
+    fetch("http://127.0.0.1:3000/api/detail/task/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(deletedData),
     })
       .then((res) => res.json())
       .then((data) => {

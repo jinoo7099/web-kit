@@ -49,7 +49,7 @@ $(".app-root").on("click", ".delete-btn", function (event) {
   const view = new planView(".app-root");
   const model = new planModel();
   const deletedPlan = view.getDeletedPlan(event);
-
+  view.deletePlan(event);
   model.deletePlan(deletedPlan);
 });
 

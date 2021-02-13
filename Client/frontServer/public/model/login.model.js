@@ -24,6 +24,7 @@ loginModel.prototype = {
           throw new Error("아이디, 비밀번호 오류");
         }
 
+        sessionStorage.setItem("User", this.data.email);
         location.href = "/#plan";
       })
       .catch((err) => console.log(err));

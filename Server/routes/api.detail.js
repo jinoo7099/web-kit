@@ -33,6 +33,7 @@ router.post("/column/create", (req, res) => {
 
 router.post("/column/delete", (req, res) => {
   const columnName = req.body.column;
+  console.log(columnName);
   Plan.findOne(
     { name: req.body.name, master: req.body.master },
     function (err, result) {
@@ -41,7 +42,7 @@ router.post("/column/delete", (req, res) => {
       }
       for (let el of result.column) {
         if (el.name === columnName) {
-          result.column.pull({ _id: i._id });
+          result.column.pull({ _id: el._id });
           break;
         }
       }
@@ -60,8 +61,27 @@ router.post("/task/create", (req, res) => {
       }
       for (let el of result.column) {
         if (el.name === columnName) {
-          el.task.push(req.body.task);
-          console.log("성공");
+          el.task.push({ name: req.body.task, author: req.body.author });
+          break;
+        }
+      }
+      result.save();
+    }
+  );
+});
+
+router.post("/task/delete", (req, res) => {
+  const columnName = req.body.column;
+  console.log(req.body);
+  Plan.findOne(
+    { name: req.body.name, master: req.body.master },
+    function (err, result) {
+      if (err) {
+        req.json({ message: "to delete column failed" });
+      }
+      for (let el of result.column) {
+        if (el.name === columnName) {
+          result.column.pull({ _id: el._id });
           break;
         }
       }

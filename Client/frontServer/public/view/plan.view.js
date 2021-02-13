@@ -69,11 +69,12 @@ planView.prototype = {
       .html();
 
     const deletedPlan = { name: name, master: master };
-    $(event.target.parentElement).remove();
 
     return deletedPlan;
   },
-
+  deletePlan: function (event) {
+    $(event.target.parentElement).remove();
+  },
   getCreateInputData: function () {
     const planName = $(".input-plan").val();
     if (!planName) {

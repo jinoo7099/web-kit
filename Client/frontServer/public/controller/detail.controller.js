@@ -27,14 +27,11 @@ $(".app-root").on("click", ".new-column", function (event) {
       throw new Error("no column name");
     }
 
-    view.addColumn(title);
+    view.addColumn(title, "");
     model.addColumn(title);
   } catch (err) {
     console.log(err);
   }
-
-  // console.log(1);
-  // console.log(2);
 });
 
 $(".app-root").on("click", ".delete-column-button", function (event) {
@@ -59,6 +56,15 @@ $(".app-root").on("click", ".new-task-button", function (event) {
 
   view.addTask(task, event);
   model.addTask(task, event);
+});
+
+$(".app-root").on("click", ".task-delete-button", function (event) {
+  event.preventDefault();
+  const view = new detailView(".app-root");
+  const model = new detailModel();
+
+  view.deleteTask(event);
+  model.deleteTask(event);
 });
 
 export { renderDetailPage };

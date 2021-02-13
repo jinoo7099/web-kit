@@ -34,7 +34,7 @@ detailView.prototype = {
     const column = `
       <div class='detail-column'>
         <div class="column-header">
-          <h2>
+          <h2 class="column-title">
             ${title}
           </h2>
           <div class="js-column-button">
@@ -57,7 +57,9 @@ detailView.prototype = {
           </div>
 
           <div class="js-task">
-            ${task}
+            
+              
+              ${task}
           </div>
         </div>
       </div>
@@ -69,13 +71,46 @@ detailView.prototype = {
     $(event.target).parents(".detail-column").remove();
   },
   addTask: function (task, event) {
-    const html = `<div class="task">${task}</div>`;
+    const author = sessionStorage.getItem("User");
+    const html = `
+    <div class="task">
+
+      <div class="task-title">
+        <span>${task}</span>
+        <span>author : ${author}</span>
+      </div>
+
+      <div class="js-task-delete-button">
+        <i class="task-delete-button fas fa-trash-alt"></i>
+      </div>
+
+    </div>`;
     $(event.target).parent().next().append(html);
   },
   formatTask: function (task) {
-    let html;
-    task.forEach((el) => (html += `<div class="task">${el}</div>`));
+    let html = "";
+    task.forEach(
+      (el) =>
+        (html += `
+    <div class="task">
+
+      <div class="task-title">
+        <span>${el.name}</span>
+        <span>author : ${el.author}</span>
+      </div>
+
+      <div class="js-task-delete-button">
+        <i class="task-delete-button fas fa-trash-alt"></i>
+      </div>
+
+    </div>
+    `)
+    );
     return html;
+  },
+  deleteTask: function (event) {
+    $(event.target).closest(".task").remove();
+    console.log($(event.target).parents());
   },
 };
 

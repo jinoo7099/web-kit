@@ -70,3 +70,11 @@
   border-radius: 6px;
   min-width: 180px;
 }
+
+.task {
+  display: flex;
+}
+
+.task-delete-button svg {
+  cursor: pointer;
+}

@@ -15,7 +15,12 @@ const planSchema = mongoose.Schema({
     type: String,
     default: "private",
   },
-  column: [{ name: { type: String }, task: [{ type: String }] }],
+  column: [
+    {
+      name: { type: String },
+      task: [{ author: { type: String }, name: { type: String } }],
+    },
+  ],
 });
 
 const taskSchema = mongoose.Schema({
