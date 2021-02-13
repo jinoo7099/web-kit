@@ -17,6 +17,7 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+
   isAuth: function () {
     fetch("http://127.0.0.1:3000/api/users/auth", {
       method: "POST",
@@ -33,6 +34,7 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+
   addColumn: function (title) {
     const planData = JSON.parse(sessionStorage.getItem("plan"));
     planData.title = title;
@@ -49,12 +51,16 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+
   deleteColumn: function (event) {
     const planData = JSON.parse(sessionStorage.getItem("plan"));
-    const columnName =
-      event.target.parentNode.parentNode.parentNode.previousSibling
-        .previousSibling.innerHTML;
-    planData.column = columnName.trim();
+    const columnName = $(event.target)
+      .parents(".column-header")
+      .children("h2")
+      .html()
+      .trim();
+
+    planData.column = columnName;
 
     fetch("http://127.0.0.1:3000/api/detail/column/delete", {
       method: "POST",
@@ -69,6 +75,7 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+
   addTask: function (task, event) {
     const taskData = JSON.parse(sessionStorage.getItem("plan"));
     const author = sessionStorage.getItem("User");
@@ -94,6 +101,7 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+
   deleteTask: function (event, columnName, taskName) {
     const deletedData = JSON.parse(sessionStorage.getItem("plan"));
     let taskTitle;
@@ -119,6 +127,7 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+
   addNewUser: function (user, planData) {
     planData.user = user;
 
@@ -135,6 +144,7 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
+
   changeState: function () {
     const data = JSON.parse(sessionStorage.getItem("plan"));
     if (data.state === "private") {

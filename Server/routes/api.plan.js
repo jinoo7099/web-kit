@@ -17,7 +17,6 @@ router.post("/create", (req, res) => {
     const plan = new Plan({
       master: user.email,
       name: planName,
-      users: [user.email],
     });
 
     Plan.findOne({ name: planName, master: user.email }, function (err, user) {
@@ -42,9 +41,16 @@ router.post("/create", (req, res) => {
 router.post("/", (req, res) => {
   const token = req.cookies.x_auth;
   User.findOne({ token: token }, function (err, user) {
-    Plan.find({ users: user.email }, function (err, plan) {
-      res.json(plan);
-    });
+    Plan.find()
+      .or([
+        { state: "public", users: user.email },
+        { state: "private", master: user.email },
+        { state: "public", master: user.email },
+      ])
+      .then((users) => {
+        console.log(users);
+        res.json(users);
+      });
   });
 });
 

@@ -5,7 +5,7 @@ const { User } = require("../models/User");
 
 router.post("/", (req, res) => {
   const plan = req.body;
-  Plan.findOne(plan, function (err, result) {
+  Plan.findOne({ _id: req.body._id }, function (err, result) {
     if (err) {
       req.json({ message: "render failed" });
     }
@@ -17,18 +17,14 @@ router.post("/", (req, res) => {
 router.post("/column/create", (req, res) => {
   const column = req.body;
 
-  Plan.findOne(
-    { name: req.body.name, master: req.body.master },
-    function (err, result) {
-      if (err) {
-        req.json({ message: "to create column failed" });
-      }
-      console.log(result.column.indexOf({ name: req.body.title }));
-      result.column.push({ name: req.body.title });
-
-      result.save();
+  Plan.findOne({ _id: req.body._id }, function (err, result) {
+    if (err) {
+      req.json({ message: "to create column failed" });
     }
-  );
+    result.column.push({ name: req.body.title });
+
+    result.save();
+  });
 });
 
 router.post("/column/delete", (req, res) => {
@@ -97,28 +93,25 @@ router.post("/task/delete", (req, res) => {
 router.post("/user/create", (req, res) => {
   const newUser = req.body.user;
 
-  Plan.findOne(
-    { name: req.body.name, master: req.body.master },
-    function (err, result) {
-      result.users.push(newUser);
-      result.save();
-    }
-  );
+  Plan.findOne({ _id: req.body._id }, function (err, result) {
+    result.users.push(newUser);
+    result.save();
+  });
 });
 
 router.post("/state/change", (req, res) => {
   const state = req.body.state;
-  Plan.findOne(
-    { name: req.body.name, master: req.body.master },
-    function (err, result) {
-      result.state = state;
-      result.save();
-      res.send({
-        success: true,
-        msg: "state change completed",
-        state: result.state,
-      });
+  Plan.findOne({ _id: req.body._id }, function (err, result) {
+    if (state === "private") {
+      result.users = [];
     }
-  );
+    result.state = state;
+    result.save();
+    res.send({
+      success: true,
+      msg: "state change completed",
+      state: result.state,
+    });
+  });
 });
 module.exports = router;

@@ -7,7 +7,6 @@ detailView.prototype = {
     return `
         <div class="js-detail-main-container">
           <div class="js-detail-column">
-      
           </div>
       
           <div class="js-new-column-container">
@@ -19,20 +18,20 @@ detailView.prototype = {
           </div>
 
           <div class="js-column-modal">
-          
           </div>
 
         </div>
-        
       `;
   },
   displayDetailPage: function (data) {
     this.el.innerHTML = this.getInitDetailPage();
+
     data.column.forEach((el) => {
       this.addColumn(el.name, this.formatTask(el.task));
     });
   },
-  addColumn: function (title, task) {
+
+  addColumn: function (title, task = "") {
     const column = `
       <div class='detail-column'>
         <div class="column-header">
@@ -66,9 +65,11 @@ detailView.prototype = {
 
     $(".js-detail-column").append(column);
   },
+
   deleteColumn: function (event) {
     $(event.target).parents(".detail-column").remove();
   },
+
   addTask: function (task, event) {
     const author = sessionStorage.getItem("User");
     const html = `

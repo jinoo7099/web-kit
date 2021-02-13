@@ -8,8 +8,8 @@ async function renderDetailPage() {
 
     await model.isAuth();
     const reqPlanData = JSON.parse(sessionStorage.getItem("plan"));
-    // sessionStorage.removeItem("plan");
     const data = await model.requestDetailPageData(reqPlanData);
+
     view.displayDetailPage(data);
   } catch (err) {
     console.log(err);
@@ -27,7 +27,7 @@ $(".app-root").on("click", ".new-column", function (event) {
       throw new Error("no column name");
     }
 
-    view.addColumn(title, "");
+    view.addColumn(title);
     model.addColumn(title);
   } catch (err) {
     console.log(err);
@@ -43,11 +43,14 @@ $(".app-root").on("click", ".delete-column-button", function (event) {
   model.deleteColumn(event);
 });
 
+////////////////
+
 $(".app-root").on("click", ".update-user-button", function (event) {
   event.preventDefault();
   const model = new detailModel();
 
   const planData = JSON.parse(sessionStorage.getItem("plan"));
+
   if (planData.state === "private") {
     alert("private이므로 사용자 추가 안됨");
     return;
@@ -56,6 +59,13 @@ $(".app-root").on("click", ".update-user-button", function (event) {
   const newUser = prompt("추가할 유저를 입력해주세요.");
   model.addNewUser(newUser, planData);
 });
+
+$(".app-root").on("click", ".update-state-button", function (ev) {
+  const model = new detailModel();
+
+  model.changeState();
+});
+
 $(".app-root").on("click", ".new-task-button", function (event) {
   event.preventDefault();
   const view = new detailView(".app-root");
@@ -115,9 +125,4 @@ document.addEventListener("drop", (ev) => {
   model.deleteTask(ev, columnName, taskName);
 });
 
-$(".app-root").on("click", ".update-state-button", function (ev) {
-  const model = new detailModel();
-
-  model.changeState();
-});
 export { renderDetailPage };

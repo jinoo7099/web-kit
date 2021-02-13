@@ -22,22 +22,7 @@ planView.prototype = {
 
   setPlan: function (data) {
     for (let i = 0; i < data.length; i++) {
-      $(".plan-results-container").append(`
-          <div class="plan-result">
-            <h5 class="plan-title">
-              <button class="plan-btn">${data[i].name}</button>
-              <div class="plan-date">
-                <span>생성일 : ${getFormatDate(data[i].date)}</span>
-              </div>
-            </h5>
-            <div class="plan-description">
-            master :  <span class="plan-span-master">${data[i].master}</span>
-              <p>users : ${data[i].users} </p> 
-              <p class="plan-state">${data[i].state} </p>
-            </div>
-            <button class="delete-btn">delete</button>
-          </div>
-          `);
+      this.appendPlan(data[i]);
     }
   },
 
@@ -56,22 +41,18 @@ planView.prototype = {
       .find(".plan-state")
       .text()
       .trim();
-    const data = { name: planName, master: master, state: state };
+    const t = $(event.target).parents();
+    console.log(t);
+    const id = $(event.target).parents(".plan-result").attr("id");
+
+    const data = { _id: id, name: planName, master: master, state: state };
     return data;
   },
 
   getDeletedPlan: function (event) {
-    const name = $(event.target.parentElement)
-      .children(".plan-title")
-      .children(".plan-btn")
-      .html();
+    const id = $(event.target).closest(".plan-result").attr("id");
 
-    const master = $(event.target.parentElement)
-      .children(".plan-description")
-      .children(".plan-span-master")
-      .html();
-
-    const deletedPlan = { name: name, master: master };
+    const deletedPlan = { _id: id };
 
     return deletedPlan;
   },
@@ -89,7 +70,7 @@ planView.prototype = {
 
   appendPlan: function (data) {
     $(".plan-results-container").append(`
-    <div class="plan-result">
+    <div class="plan-result" id="${data._id}">
       <h5 class="plan-title">
         <button class="plan-btn">${data.name}</button>
         <div class="plan-date">
@@ -99,7 +80,7 @@ planView.prototype = {
       <div class="plan-description">
       master :  <span class="plan-span-master">${data.master}</span>
         <p>users : ${data.users} </p> 
-        <p>${data.state} </p>
+        <p class="plan-state">${data.state} </p>
       </div>
       <button class="delete-btn">delete</button>
     </div>

@@ -15,6 +15,7 @@ document.addEventListener("click", (e) => {
 function loginProcess() {
   const view = new loginView(".app-root");
   const data = view.getIdAndPwd();
+
   const model = new loginModel(data);
   model.login();
 }
@@ -22,6 +23,7 @@ function loginProcess() {
 function registerProcess() {
   const view = new loginView(".app-root");
   const data = view.getIdAndPwd();
+
   const model = new loginModel(data);
   model.register();
 }
