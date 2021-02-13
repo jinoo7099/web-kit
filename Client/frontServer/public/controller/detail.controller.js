@@ -70,12 +70,26 @@ $(".app-root").on("click", ".task-delete-button", function (event) {
   const view = new detailView(".app-root");
   const model = new detailModel();
 
+  const columnName = $(event.target)
+    .closest(".detail-column")
+    .find("h2")
+    .html()
+    .trim(); // 그래서 함수 밖에서 인수로 넘겨줌
+
   view.deleteTask(event);
-  model.deleteTask(event);
+  model.deleteTask(event, columnName); // 왜 안에서는 event.parents()가 3개 밖에 안뜰가?
 });
 
 document.addEventListener("dragstart", (ev) => {
-  ev.dataTransfer.setData("text", ev.target.id);
+  const columnName = $(ev.target)
+    .closest(".detail-column")
+    .find("h2")
+    .html()
+    .trim();
+  ev.dataTransfer.setData(
+    "text",
+    JSON.stringify({ id: ev.target.id, column: columnName })
+  );
 });
 
 document.addEventListener("dragover", (ev) => {
@@ -84,7 +98,14 @@ document.addEventListener("dragover", (ev) => {
 
 document.addEventListener("drop", (ev) => {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+  const data = JSON.parse(ev.dataTransfer.getData("text"));
+  const node = document.getElementById(data.id);
+  ev.target.children[1].children[1].appendChild(node);
+
+  const model = new detailModel();
+  const taskName = node.children[0].children[0].innerHTML;
+  const columnName = data.column;
+  model.addTask(taskName, ev);
+  model.deleteTask(ev, columnName, taskName);
 });
 export { renderDetailPage };

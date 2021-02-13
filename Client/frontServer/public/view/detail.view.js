@@ -108,7 +108,6 @@ detailView.prototype = {
   },
   deleteTask: function (event) {
     $(event.target).closest(".task").remove();
-    console.log($(event.target).parents());
   },
 };
 

@@ -94,11 +94,17 @@ detailModel.prototype = {
       })
       .catch((err) => console.log(err));
   },
-  deleteTask: function (event) {
+  deleteTask: function (event, columnName, taskName) {
     const deletedData = JSON.parse(sessionStorage.getItem("plan"));
-    const taskTitle = $(event.target).closest(".task").find("span").html();
-
+    let taskTitle;
+    if (event.target.className === "detail-column") {
+      taskTitle = taskName;
+    } else {
+      taskTitle = $(event.target).closest(".task").find("span").html();
+    }
+    console.log(taskTitle);
     deletedData.task = taskTitle;
+    deletedData.column = columnName;
 
     fetch("http://127.0.0.1:3000/api/detail/task/delete", {
       method: "POST",

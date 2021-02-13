@@ -72,17 +72,21 @@ router.post("/task/create", (req, res) => {
 
 router.post("/task/delete", (req, res) => {
   const columnName = req.body.column;
-  console.log(req.body);
+  const taskName = req.body.task;
   Plan.findOne(
     { name: req.body.name, master: req.body.master },
     function (err, result) {
       if (err) {
         req.json({ message: "to delete column failed" });
       }
+
       for (let el of result.column) {
         if (el.name === columnName) {
-          result.column.pull({ _id: el._id });
-          break;
+          for (let task of el.task) {
+            if (task.name === taskName) {
+              el.task.pull({ _id: task._id });
+            }
+          }
         }
       }
       result.save();
