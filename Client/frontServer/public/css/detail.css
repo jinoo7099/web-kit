@@ -73,8 +73,58 @@
 
 .task {
   display: flex;
+  width: 90%;
+  height: 50px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+  margin: 10px;
+  border-color: black;
+  background-color: rgb(255, 255, 255);
 }
 
-.task-delete-button svg {
+.task-title {
+  width: 90%;
+  padding: 0px 8px 4px 32px;
+}
+.js-task-delete-button {
+  padding-top: 15px;
+}
+.task-delete-button {
   cursor: pointer;
+}
+
+.task-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.js-new-task {
+  display: flex;
+  justify-content: center;
+}
+
+.task-name-input {
+  width: 250px;
+  border: none;
+  border-bottom: 2px solid #000;
+  background: none;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+}
+
+.new-task-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(36, 41, 46);
+  font-size: 16px;
+  line-height: 30px;
+  width: 60px;
+  height: 30px;
+  border-width: 1px;
+  outline: 0;
+  border-radius: 6px;
 }

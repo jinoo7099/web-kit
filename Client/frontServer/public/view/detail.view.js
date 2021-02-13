@@ -76,8 +76,8 @@ detailView.prototype = {
     <div class="task">
 
       <div class="task-title">
-        <span>${task}</span>
-        <span>author : ${author}</span>
+      <span class="task-name">${task}</span></br>
+        <span>Added by ${author}</span>
       </div>
 
       <div class="js-task-delete-button">
@@ -95,8 +95,8 @@ detailView.prototype = {
     <div class="task">
 
       <div class="task-title">
-        <span>${el.name}</span>
-        <span>author : ${el.author}</span>
+        <span class="task-name">${el.name}</span></br>
+        <span>Added by ${el.author}</span>
       </div>
 
       <div class="js-task-delete-button">
