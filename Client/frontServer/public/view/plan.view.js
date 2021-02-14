@@ -41,8 +41,6 @@ planView.prototype = {
       .find(".plan-state")
       .text()
       .trim();
-    const t = $(event.target).parents();
-    console.log(t);
     const id = $(event.target).parents(".plan-result").attr("id");
 
     const data = { _id: id, name: planName, master: master, state: state };

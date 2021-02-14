@@ -19,8 +19,11 @@ async function renderDetailPage() {
 $(".app-root").on("click", ".new-column", function (event) {
   event.preventDefault();
   try {
+    checkAuthority();
+
     const view = new detailView(".app-root");
     const model = new detailModel();
+
     const title = prompt("이름을 입력해주세요.");
 
     if (!title) {
@@ -35,77 +38,112 @@ $(".app-root").on("click", ".new-column", function (event) {
 });
 
 $(".app-root").on("click", ".delete-column-button", function (event) {
-  event.preventDefault();
-  const view = new detailView(".app-root");
-  const model = new detailModel();
+  try {
+    event.preventDefault();
+    checkAuthority();
 
-  view.deleteColumn(event);
-  model.deleteColumn(event);
+    const view = new detailView(".app-root");
+    const model = new detailModel();
+
+    view.deleteColumn(event);
+    model.deleteColumn(event);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+$(".app-root").on("click", ".update-user-button", function (event) {
+  try {
+    event.preventDefault();
+    checkAuthority();
+    const model = new detailModel();
+
+    const planData = JSON.parse(sessionStorage.getItem("plan"));
+
+    if (planData.state === "private") {
+      alert("private이므로 사용자 추가 안됨");
+      return;
+    }
+
+    const newUser = prompt("추가할 유저를 입력해주세요.");
+    model.addNewUser(newUser, planData);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+$(".app-root").on("click", ".update-state-button", function (ev) {
+  ev.preventDefault();
+  try {
+    checkAuthority();
+    const model = new detailModel();
+
+    model.changeState();
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 ////////////////
 
-$(".app-root").on("click", ".update-user-button", function (event) {
-  event.preventDefault();
-  const model = new detailModel();
-
-  const planData = JSON.parse(sessionStorage.getItem("plan"));
-
-  if (planData.state === "private") {
-    alert("private이므로 사용자 추가 안됨");
-    return;
-  }
-
-  const newUser = prompt("추가할 유저를 입력해주세요.");
-  model.addNewUser(newUser, planData);
-});
-
-$(".app-root").on("click", ".update-state-button", function (ev) {
-  const model = new detailModel();
-
-  model.changeState();
-});
-
 $(".app-root").on("click", ".new-task-button", function (event) {
   event.preventDefault();
-  const view = new detailView(".app-root");
-  const model = new detailModel();
-  const task = $(event.target).prev().val();
+  try {
+    checkAuthority();
+    const view = new detailView(".app-root");
+    const model = new detailModel();
+    const task = $(event.target).prev().val();
 
-  if (!task) {
-    alert("no content in input");
-    throw new Error("no content in input");
+    if (!task) {
+      alert("no content in input");
+      throw new Error("no content in input");
+    }
+
+    view.addTask(task, event);
+    model.addTask(task, event);
+  } catch (err) {
+    console.log(err);
   }
-
-  view.addTask(task, event);
-  model.addTask(task, event);
 });
 
 $(".app-root").on("click", ".task-delete-button", function (event) {
-  event.preventDefault();
-  const view = new detailView(".app-root");
-  const model = new detailModel();
+  try {
+    event.preventDefault();
 
-  const columnName = $(event.target)
-    .closest(".detail-column")
-    .find("h2")
-    .html()
-    .trim(); // 그래서 함수 밖에서 인수로 넘겨줌
+    checkAuthority();
+    const view = new detailView(".app-root");
+    const model = new detailModel();
 
-  view.deleteTask(event);
-  model.deleteTask(event, columnName); // 왜 안에서는 event.parents()가 3개 밖에 안뜰가?
+    const columnName = $(event.target)
+      .closest(".detail-column")
+      .find("h2")
+      .html()
+      .trim(); // 그래서 함수 밖에서 인자로 넘겨줌
+
+    console.log($(event.target).parents());
+    view.deleteTask(event);
+    model.deleteTask(event, columnName); // 왜 안에서는 event.parents()가 3개 밖에 안뜰가?
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 document.addEventListener("dragstart", (ev) => {
-  const columnName = $(ev.target)
-    .closest(".detail-column")
-    .find("h2")
-    .html()
-    .trim();
-  ev.dataTransfer.setData(
-    "text",
-    JSON.stringify({ id: ev.target.id, column: columnName })
-  );
+  try {
+    checkAuthority();
+
+    const columnName = $(ev.target)
+      .closest(".detail-column")
+      .find("h2")
+      .html()
+      .trim();
+    ev.dataTransfer.setData(
+      "text",
+      JSON.stringify({ id: ev.target.id, column: columnName })
+    );
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 document.addEventListener("dragover", (ev) => {
@@ -116,13 +154,26 @@ document.addEventListener("drop", (ev) => {
   ev.preventDefault();
   const data = JSON.parse(ev.dataTransfer.getData("text"));
   const node = document.getElementById(data.id);
-  ev.target.children[1].children[1].appendChild(node);
 
   const model = new detailModel();
   const taskName = node.children[0].children[0].innerHTML;
   const columnName = data.column;
+
+  ev.target.children[1].children[1].appendChild(node);
   model.addTask(taskName, ev);
   model.deleteTask(ev, columnName, taskName);
 });
+
+function checkAuthority() {
+  const user = sessionStorage.getItem("User");
+  const plan = JSON.parse(sessionStorage.getItem("plan"));
+
+  if (user !== plan.master) {
+    alert("권한이 없습니다.");
+    throw new Error("수정 권한 없음");
+  }
+
+  return true;
+}
 
 export { renderDetailPage };

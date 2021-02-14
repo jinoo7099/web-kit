@@ -37,6 +37,7 @@ detailModel.prototype = {
 
   addColumn: function (title) {
     const planData = JSON.parse(sessionStorage.getItem("plan"));
+
     planData.title = title;
     fetch("http://127.0.0.1:3000/api/detail/column/create", {
       method: "POST",
@@ -105,6 +106,7 @@ detailModel.prototype = {
   deleteTask: function (event, columnName, taskName) {
     const deletedData = JSON.parse(sessionStorage.getItem("plan"));
     let taskTitle;
+    console.log($(event.target).parents());
     if (event.target.className === "detail-column") {
       taskTitle = taskName;
     } else {
