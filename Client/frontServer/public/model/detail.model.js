@@ -106,13 +106,11 @@ detailModel.prototype = {
   deleteTask: function (event, columnName, taskName) {
     const deletedData = JSON.parse(sessionStorage.getItem("plan"));
     let taskTitle;
-    console.log($(event.target).parents());
     if (event.target.className === "detail-column") {
       taskTitle = taskName;
     } else {
       taskTitle = $(event.target).closest(".task").find("span").html();
     }
-    console.log(taskTitle);
     deletedData.task = taskTitle;
     deletedData.column = columnName;
 

@@ -29,7 +29,6 @@ router.post("/column/create", (req, res) => {
 
 router.post("/column/delete", (req, res) => {
   const columnName = req.body.column;
-  console.log(columnName);
   Plan.findOne(
     { name: req.body.name, master: req.body.master },
     function (err, result) {

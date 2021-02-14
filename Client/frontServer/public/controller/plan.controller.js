@@ -8,7 +8,6 @@ async function renderPlanPage() {
 
     await model.isAuth(); // 페이지 접속 전 인증
     const data = await model.requestPlanPageData();
-    console.log(data);
     view.displayPlanPage(data);
   } catch (error) {
     console.error(error);

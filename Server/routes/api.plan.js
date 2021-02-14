@@ -48,14 +48,12 @@ router.post("/", (req, res) => {
         { state: "public", master: user.email },
       ])
       .then((users) => {
-        console.log(users);
         res.json(users);
       });
   });
 });
 
 router.post("/delete", (req, res) => {
-  console.log(req.body);
   Plan.remove(req.body, function (err, plan) {
     if (err) {
       throw err;
