@@ -1,5 +1,8 @@
 import React from 'react'
-import { FaSearch, FaAirbnb } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa'
+import { FiMenu } from 'react-icons/fi'
+import { BsFillPersonFill } from 'react-icons/bs'
+import { BiBasketball } from 'react-icons/bi'
 import {
   Nav,
   NavContainer,
@@ -9,51 +12,70 @@ import {
   NavSmallLogo,
   NavCenterContainer,
   NavCenter,
-  NavRight,
-  NavCenterButton,
+  NavRightContainer,
+  NavButton,
   NavContentDiv,
   NavGuestDiv,
   NavSearchIcon,
   VerticalSpan,
+  MenuButton,
+  NavLogo
 } from './NavBar.elements'
 
 const NavBar = () => (
-  <Nav>
-    <NavContainer>
+  <NavContainer>
+    <Nav>
       <NavLeftContainer>
-        <NavLeft>
+        <NavLeft href="/">
           <NavLargeLogo>
-            <FaAirbnb />
+            <NavLogo />
             airbnb
           </NavLargeLogo>
           <NavSmallLogo>
-            <FaAirbnb />
+            <NavLogo />
           </NavSmallLogo>
         </NavLeft>
       </NavLeftContainer>
 
       <NavCenterContainer>
         <NavCenter>
-          <NavCenterButton>
-            <NavContentDiv>서울</NavContentDiv>
-          </NavCenterButton>
+          <NavButton>
+            <NavContentDiv>근처 추천 장소</NavContentDiv>
+          </NavButton>
           <VerticalSpan />
-          <NavCenterButton>
+          <NavButton>
             <NavContentDiv>날짜 입력</NavContentDiv>
-          </NavCenterButton>
+          </NavButton>
           <VerticalSpan />
-          <NavCenterButton>
+          <NavButton>
             <NavGuestDiv>게스트 추가</NavGuestDiv>
             <NavSearchIcon>
               <FaSearch />
             </NavSearchIcon>
-          </NavCenterButton>
+          </NavButton>
         </NavCenter>
       </NavCenterContainer>
 
-      <NavRight>asd</NavRight>
-    </NavContainer>
-  </Nav>
+      <NavRightContainer>
+        <MenuButton>
+          <NavContentDiv>호스트 되기</NavContentDiv>
+        </MenuButton>
+        <MenuButton>
+          <NavContentDiv>
+            <BiBasketball size="20" />
+          </NavContentDiv>
+        </MenuButton>
+        <MenuButton>
+          <NavContentDiv>
+            <FiMenu size="20" />
+          </NavContentDiv>
+          <NavContentDiv>
+            <BsFillPersonFill size="20" />
+          </NavContentDiv>
+        </MenuButton>
+      </NavRightContainer>
+    </Nav>
+  </NavContainer>
 )
 
 export default NavBar

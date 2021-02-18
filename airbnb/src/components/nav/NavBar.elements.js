@@ -1,14 +1,27 @@
 import styled from 'styled-components'
+import { FaAirbnb } from 'react-icons/fa'
 
-const Nav = styled.header`
+const NavLogo = styled(FaAirbnb)`
+  position: relative;
+  top: 10px;
+  font-size: 45px;
+`
+
+const NavContainer = styled.header`
   height: 80px;
   width: 100%;
   position: fixed;
   left: 0;
-  --header-brand-color: #ff385c !important;
+  --header-brand-color: #ff385c;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+  display: none;
+
+  @media (min-width: 744px){
+    display: block;
+  }
 `
 
-const NavContainer = styled.div`
+const Nav = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
@@ -42,13 +55,15 @@ const NavLeftContainer = styled.div`
     flex: 1 0 140px;
   }
 `
+
 const NavLeft = styled.a`
   display: inline-flex;
   height: 80px;
   color: #ff385c;
-  vertical-align: middle;
   position: relative;
+  vertical-align: middle;
   align-items: center;
+  text-decoration:none;
   ::before {
     content: '';
     position: absolute;
@@ -60,6 +75,7 @@ const NavLeft = styled.a`
 `
 
 const NavLargeLogo = styled.div`
+
   display: none;
   font-size: 30px;
   font-weight: 600;
@@ -94,21 +110,9 @@ const NavCenter = styled.div`
   vertical-align: center;
 `
 
-const NavRight = styled.div`
-  background-color: green;
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 
-  @media (min-width: 950px) {
-    flex: 1 0 140px;
-  }
-`
 
-// const NavRegion = styled.div``
-
-const NavCenterButton = styled.button`
+const NavButton = styled.button`
   cursor: pointer;
   height: 48px;
   background: transparent;
@@ -119,6 +123,7 @@ const NavCenterButton = styled.button`
   margin: -1px;
   flex: 0 1 auto;
   z-index: 1;
+  width: ${(props) => props.width};
 
   :first-of-type {
     padding-left: 8px;
@@ -133,47 +138,73 @@ const NavContentDiv = styled.div`
   flex: 1 1 auto;
   min-width: 0px;
   font-weight: 600;
-  text-overflow: ellipsis;
   padding: 0 16px;
-  line-height: 18px;
   white-space: nowrap;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 `
 
 const NavGuestDiv = styled.div`
-  font-size: 14px !important;
-  line-height: 18px !important;
-  -webkit-flex: 1 1 auto !important;
-  -ms-flex: 1 1 auto !important;
-  flex: 1 1 auto !important;
-  min-width: 0px !important;
-  padding: 0 16px !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  color: #717171 !important;
-  font-weight: 400 !important;
+  font-size: 14px;
+  line-height: 18px;
+  flex: 1 1 auto;
+  min-width: 0px;
+  padding: 0 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #717171;
+  font-weight: 400;
 `
 
 const NavSearchIcon = styled.div`
-  background-color: #ff385c !important;
-  border-radius: 50% !important;
-  color: #ffffff !important;
-  -webkit-flex: 0 0 32 !important;
-  -ms-flex: 0 0 32 !important;
-  flex: 0 0 32 !important;
-  height: 32px !important;
-  margin: 7px 7px 7px 0 !important;
-  padding: 10px !important;
-  width: 32px !important;
+  background-color: #ff385c;
+  border-radius: 50%;
+  color: #ffffff;
+  flex: 0 0 32;
+  height: 32px;
+  margin: 7px 7px 7px 0;
+  padding: 10px;
+  width: 32px;
 `
 
 const VerticalSpan = styled.span`
   background-color: #dddddd;
-  flex: 0 0 1px;
   height: 24px;
   width: 1px;
 `
+const NavRightContainer = styled.div`
+  background-color: #ffffff;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media (min-width: 950px) {
+    flex: 1 0 140px;
+  }
+`
+const MenuButton = styled.button`
+  display: inline-flex;
+  margin: 0px;
+  background: transparent;
+  border-color: #ffffff;
+  height: 42px;
+  position: relative;
+  vertical-align: middle;
+  border-radius: 21px;
+  border: 0px solid transparent;
+  cursor: pointer;
+  width : ${props => props.width};
+
+  &:hover {
+    background: #ecf0f1;
+  }
+`
+
 export {
   Nav,
   NavContainer,
@@ -183,10 +214,12 @@ export {
   NavSmallLogo,
   NavCenterContainer,
   NavCenter,
-  NavRight,
-  NavCenterButton,
+  NavRightContainer,
+  NavButton,
   NavContentDiv,
   NavGuestDiv,
   NavSearchIcon,
   VerticalSpan,
+  MenuButton,
+  NavLogo
 }
