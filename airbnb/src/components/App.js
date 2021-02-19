@@ -1,15 +1,14 @@
 import React from 'react'
-import NavBar from './nav/NavBar'
+import NavBar from './header/NavBar'
+import Main from './main/Main'
 
 function App() {
   return (
     <>
-      <NavBar>
-        asds
-      </NavBar>
+      <NavBar />
+      <Main />
     </>
   )
-
 }
 
 export default App

@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 import { FaAirbnb } from 'react-icons/fa'
+import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg'
 
+const NavGlobeSvg = styled(GlobeIcon)`
+  width: 21px;
+  height: 21px;
+`
 const NavLogo = styled(FaAirbnb)`
   position: relative;
   top: 10px;
   font-size: 45px;
 `
 
-const NavContainer = styled.header`
+const NavContainer = styled.div`
   height: 80px;
   width: 100%;
   position: fixed;
@@ -15,8 +20,9 @@ const NavContainer = styled.header`
   --header-brand-color: #ff385c;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
   display: none;
-
-  @media (min-width: 744px){
+  z-index: 999;
+  background: #ffffff;
+  @media (min-width: 744px) {
     display: block;
   }
 `
@@ -26,7 +32,7 @@ const Nav = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 1;
+  z-index: 100;
   justify-content: space-between;
   margin: 0 auto;
   align-items: center;
@@ -63,7 +69,7 @@ const NavLeft = styled.a`
   position: relative;
   vertical-align: middle;
   align-items: center;
-  text-decoration:none;
+  text-decoration: none;
   ::before {
     content: '';
     position: absolute;
@@ -75,7 +81,6 @@ const NavLeft = styled.a`
 `
 
 const NavLargeLogo = styled.div`
-
   display: none;
   font-size: 30px;
   font-weight: 600;
@@ -109,8 +114,6 @@ const NavCenter = styled.div`
   text-align: left;
   vertical-align: center;
 `
-
-
 
 const NavButton = styled.button`
   cursor: pointer;
@@ -198,11 +201,15 @@ const MenuButton = styled.button`
   border-radius: 21px;
   border: 0px solid transparent;
   cursor: pointer;
-  width : ${props => props.width};
+  width: ${(props) => props.width};
 
   &:hover {
     background: #ecf0f1;
   }
+`
+const Header = styled.header`
+  width: 100%;
+  height: 80px;
 `
 
 export {
@@ -221,5 +228,7 @@ export {
   NavSearchIcon,
   VerticalSpan,
   MenuButton,
-  NavLogo
+  NavLogo,
+  NavGlobeSvg,
+  Header,
 }
