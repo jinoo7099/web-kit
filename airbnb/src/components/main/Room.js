@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import { ReactComponent as redStarIcon } from '../../assets/icons/redStar.svg'
 import Slider from './Slider'
@@ -38,12 +37,6 @@ const Grade = styled.div`
   margin-bottom: 6px;
 `
 
-// const ImageContainer = styled.div`
-//   height: 200px;
-//   contain: none;
-//   background: #ffffff;
-// `
-
 const StarIcon = styled(redStarIcon)`
   height: 14px;
   width: 14px;
@@ -51,38 +44,24 @@ const StarIcon = styled(redStarIcon)`
   margin-right: 4px;
 `
 
-const Room = ({ address, grade, type, description, images }) => (
-  <div>
-    {/* <Carousel showThumbs={false} infiniteLoop showArrows>
-      {images.map((item) => (
-        <ImageContainer>
-          <img
-            src={item}
-            alt="room"
-            style={{
-              width: '100%',
-              height: '100%',
-              borderRadius: '20px',
-              objectFit: 'cover',
-            }}
-          />
-        </ImageContainer>
-      ))}
-    </Carousel> */}
-    <Slider img={images} />
+export default function Room({ address, grade, type, description, images }) {
+  return (
+    <div>
+      <Slider img={images} />
 
-    <Grade>
-      <StarIcon />
-      <span>{grade}</span>
-    </Grade>
-    <TypeAndAddress>
-      {type}
-      <span>·</span>
-      {address}
-    </TypeAndAddress>
-    <Description>{description}</Description>
-  </div>
-)
+      <Grade>
+        <StarIcon />
+        <span>{grade}</span>
+      </Grade>
+      <TypeAndAddress>
+        {type}
+        <span>·</span>
+        {address}
+      </TypeAndAddress>
+      <Description>{description}</Description>
+    </div>
+  )
+}
 
 Room.propTypes = {
   address: PropTypes.string.isRequired,
@@ -91,5 +70,3 @@ Room.propTypes = {
   description: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
-
-export default Room

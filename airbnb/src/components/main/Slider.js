@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Slide from './Slide'
-import { ReactComponent as RightButtonSVG } from '../../assets/icons/next.svg'
-import { ReactComponent as LeftButtonSVG } from '../../assets/icons/left-arrow.svg'
+import { NextSvg, PreviousSVG } from '../atoms/icons/icon'
 
 const Container = styled.div`
   width: 100%;
@@ -58,14 +57,6 @@ const SliderContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-`
-
-const NextSvg = styled(RightButtonSVG)`
-  width: 10px;
-`
-
-const PreviousSVG = styled(LeftButtonSVG)`
-  width: 10px;
 `
 
 export default function Slider({ img }) {

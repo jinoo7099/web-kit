@@ -173,7 +173,23 @@ export const FooterContainer = styled.div`
 `
 
 export const NumberSelect = styled.div`
-  height: 70%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`
+
+export const NumberButton = styled.button`
+  background: transparent;
+  width: 40px;
+  height: 30px;
+  border: 0px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover {
+    background: #ecf0f1;
+  }
 `
 
 export const FooterLabel = styled.div``
