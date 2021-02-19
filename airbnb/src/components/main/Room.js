@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Carousel } from 'react-responsive-carousel'
+// import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 import { ReactComponent as redStarIcon } from '../../assets/icons/redStar.svg'
+import Slider from './Slider'
 
 const Description = styled.div`
   display: block;
@@ -37,11 +38,11 @@ const Grade = styled.div`
   margin-bottom: 6px;
 `
 
-const ImageContainer = styled.div`
-  height: 200px;
-  contain: none;
-  background: #ffffff;
-`
+// const ImageContainer = styled.div`
+//   height: 200px;
+//   contain: none;
+//   background: #ffffff;
+// `
 
 const StarIcon = styled(redStarIcon)`
   height: 14px;
@@ -49,9 +50,10 @@ const StarIcon = styled(redStarIcon)`
   fill: #ff385c;
   margin-right: 4px;
 `
+
 const Room = ({ address, grade, type, description, images }) => (
   <div>
-    <Carousel showThumbs={false} infiniteLoop showArrows>
+    {/* <Carousel showThumbs={false} infiniteLoop showArrows>
       {images.map((item) => (
         <ImageContainer>
           <img
@@ -66,7 +68,8 @@ const Room = ({ address, grade, type, description, images }) => (
           />
         </ImageContainer>
       ))}
-    </Carousel>
+    </Carousel> */}
+    <Slider img={images} />
 
     <Grade>
       <StarIcon />
