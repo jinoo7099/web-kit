@@ -28,8 +28,10 @@ export const MainIntrd = styled.div`
 
 export const MainTitleWrapper = styled.div`
   width: 100%;
-  height: 70%;
   padding-top: 50px;
+  @media (max-width: 744px){
+    padding-top: 30px;
+  }
 `
 
 export const MainTitleLabel = styled.div`
@@ -54,7 +56,12 @@ export const MainIntrdButtonWrapper = styled.div`
   height: 30%;
   display: flex;
   padding-top: 20px;
+
+  @media (max-width: 744px){
+    display: none;
+  }
 `
+
 
 export const MainIntrdButton = styled.button`
   height: 36px;
@@ -103,6 +110,7 @@ export const MainSectionLabel = styled.div`
 export const MainSectionLabelContainer = styled.div`
   padding-left: 24px;
   padding-right: 24px;
+  padding-bottom: 20px;
   max-width: 1600px;
 
   @media (min-width: 744px) {

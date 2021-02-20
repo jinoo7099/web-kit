@@ -6,7 +6,7 @@ import { NextSvg, PreviousSVG } from '../atoms/icons/icon'
 
 const Container = styled.div`
   width: 100%;
-  height: 400px;
+  height: 200px;
   overflow: hidden;
   position: relative;
   @media (min-width: 744px) {
@@ -18,7 +18,7 @@ const RightButton = styled.button`
   all: unset;
   position: absolute;
   right: 0;
-  top: 170px;
+  top: 40%;
   border: 1px solid transparent;
   padding: 10px 15px;
   color: black;
@@ -39,7 +39,7 @@ const LeftButton = styled.button`
   border: 1px solid transparent;
   position: absolute;
   left: 0;
-  top: 170px;
+  top: 40%;
   padding: 10px 15px;
   color: black;
   border-radius: 50px;

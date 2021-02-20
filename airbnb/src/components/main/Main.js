@@ -1,6 +1,4 @@
-import React from 'react'
-import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
-// import { Carousel } from 'react-responsive-carousel'
+import React from "react";
 import {
   MainContainer,
   MainIntrd,
@@ -20,10 +18,11 @@ import {
   NumberSelect,
   FooterLabel,
   NumberButton,
-} from './Main.element'
-import { NextSvg, PreviousSVG } from '../atoms/icons/icon'
-import Room from './Room'
-import roomData from '../../assets/mockdata/rooms.json'
+} from "./Main.element";
+import { MobileIntrdButtonWrapper } from "./Main.mobile.element";
+import { NextSvg, PreviousSVG } from "../atoms/icons/icon";
+import Room from "./Room";
+import roomData from "../../assets/mockdata/rooms.json";
 
 const Main = () => (
   <MainContainer>
@@ -46,26 +45,22 @@ const Main = () => (
           <MainIntrdSpan>필터 추가하기</MainIntrdSpan>
         </MainIntrdButton>
       </MainIntrdButtonWrapper>
+      <MobileIntrdButtonWrapper>
+        <MainIntrdButton>
+          <MainIntrdSpan>필터</MainIntrdSpan>
+        </MainIntrdButton>
+      </MobileIntrdButtonWrapper>
     </MainIntrd>
 
     <MainSection>
       <MainSectionLabelContainer>
-        <MainSectionLabel>
-          여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수
-          있습니다.
-        </MainSectionLabel>
+        <MainSectionLabel>여행 날짜와 게스트 인원수를 입력하면 1박당 총 요금을 확인할 수 있습니다.</MainSectionLabel>
       </MainSectionLabelContainer>
 
       <RoomContainer>
         {roomData.rooms.map((item) => (
           <RoomWrapper>
-            <Room
-              address={item.address}
-              grade={item.grade}
-              type={item.type}
-              description={item.description}
-              images={item.images}
-            />
+            <Room address={item.address} grade={item.grade} type={item.type} description={item.description} images={item.images} />
           </RoomWrapper>
         ))}
       </RoomContainer>
@@ -88,16 +83,11 @@ const Main = () => (
             <NextSvg />
           </NumberButton>
         </NumberSelect>
-        <FooterLabel style={{ fontWeight: '700', marginBottom: '50px' }}>
-          숙소 300개 이상 중 1-20
-        </FooterLabel>
-        <FooterLabel>
-          전체 요금을 보려면 날짜를 입력하세요. 추가 요금이 적용되고 세금이
-          추가될 수 있습니다.
-        </FooterLabel>
+        <FooterLabel style={{ fontWeight: "700", marginBottom: "50px" }}>숙소 300개 이상 중 1-20</FooterLabel>
+        <FooterLabel>전체 요금을 보려면 날짜를 입력하세요. 추가 요금이 적용되고 세금이 추가될 수 있습니다.</FooterLabel>
       </FooterContainer>
     </MainFooter>
   </MainContainer>
-)
+);
 
-export default Main
+export default Main;

@@ -4,6 +4,7 @@ import { ReactComponent as LeftButtonSVG } from '../../../assets/icons/left-arro
 import { ReactComponent as Facebook } from '../../../assets/icons/facebook.svg'
 import { ReactComponent as Twitter } from '../../../assets/icons/twitter.svg'
 import { ReactComponent as Instagram } from '../../../assets/icons/instargram.svg'
+import { ReactComponent as Category } from "../../../assets/icons/category.svg"
 
 export const NextSvg = styled(RightButtonSVG)`
   width: 10px;
@@ -22,4 +23,8 @@ export const TwitterSVG = styled(Twitter)`
 
 export const InstargramSVG = styled(Instagram)`
   width: 10px;
+`
+
+export const CategorySVG = styled(Category)`
+  
 `
