@@ -16,13 +16,16 @@ export const PreviousSVG = styled(LeftButtonSVG)`
 
 export const FacebookSVG = styled(Facebook)`
   width: 10px;
+  margin: 0 20px;
 `
 export const TwitterSVG = styled(Twitter)`
   width: 10px;
+  margin: 0 20px;
 `
 
 export const InstargramSVG = styled(Instagram)`
   width: 10px;
+  margin: 0 20px;
 `
 
 export const CategorySVG = styled(Category)`

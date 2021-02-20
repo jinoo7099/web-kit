@@ -22,28 +22,29 @@ import {
   NavGlobeSvg,
   Header,
 } from './NavBar.elements'
-import { MobileNav, MobileNavContainer, MobileNavSpan, MobileNavButton } from './Navbar.mobile.el'
+import { MobileHeader, MobileHeaderContainer, MobileNavSpan, MobileNavButton, MobileContainer } from './Navbar.mobile.el'
 import { PreviousSVG, CategorySVG } from '../atoms/icons/icon'
 
 const NavBar = () => (
   <Header>
-    <MobileNav>
-      <MobileNavContainer>
-        <div>
+    <MobileHeader>
+      <MobileHeaderContainer>
+        <MobileContainer>
           <MobileNavButton>
             <PreviousSVG />
           </MobileNavButton>
           <MobileNavSpan>서울</MobileNavSpan>
-        </div>
-        <div style={{ display: 'flex' }}>
+        </MobileContainer>
+        <MobileContainer>
           <MobileNavSpan>날짜 입력</MobileNavSpan>
           <VerticalSpan />
-          <div style={{ marginTop: '4px', marginLeft: "10px" }}>
+          <MobileContainer style={{ marginTop: '4px', marginLeft: "10px" }}>
             <CategorySVG />
-          </div>
-        </div>
-      </MobileNavContainer>
-    </MobileNav>
+          </MobileContainer>
+        </MobileContainer>
+      </MobileHeaderContainer>
+    </MobileHeader>
+
     <NavContainer>
       <Nav>
         <NavLeftContainer>
@@ -61,7 +62,7 @@ const NavBar = () => (
         <NavCenterContainer>
           <NavCenter>
             <NavButton>
-              <NavContentDiv>근처 추천 장소</NavContentDiv>
+              <NavContentDiv>서울</NavContentDiv>
             </NavButton>
             <VerticalSpan />
             <NavButton>

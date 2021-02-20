@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const MobileNav = styled.div`
+export const MobileHeader = styled.div`
   height: 60px;
   width: 100%;
   position: fixed;
@@ -15,7 +15,7 @@ export const MobileNav = styled.div`
 `
 
 
-export const MobileNavContainer = styled.div` 
+export const MobileHeaderContainer = styled.div` 
   width: 100%;
   height: 100%;
   padding: 10px 20px;
@@ -37,4 +37,9 @@ export const MobileNavButton = styled.button`
   background: transparent;
   border: 1px solid transparent;
   border-radius: 24px;
+`
+
+export const MobileContainer = styled.div`
+  display: flex;
+  align-items: center;
 `

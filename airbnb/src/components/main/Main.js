@@ -69,19 +69,8 @@ const Main = () => (
     <MainFooter>
       <FooterContainer>
         <NumberSelect>
-          <NumberButton>
-            <PreviousSVG />
-          </NumberButton>
-          <NumberButton>1</NumberButton>
-          <NumberButton>2</NumberButton>
-          <NumberButton>3</NumberButton>
-          <NumberButton>4</NumberButton>
-          <NumberButton>5</NumberButton>
-          <NumberButton>...</NumberButton>
-          <NumberButton>15</NumberButton>
-          <NumberButton>
-            <NextSvg />
-          </NumberButton>
+
+          {[<PreviousSVG />, "1", "2", "3", "4", "5", "...", "15", <NextSvg />].map((item) => (<NumberButton>{item}</NumberButton>))}
         </NumberSelect>
         <FooterLabel style={{ fontWeight: "700", marginBottom: "50px" }}>숙소 300개 이상 중 1-20</FooterLabel>
         <FooterLabel>전체 요금을 보려면 날짜를 입력하세요. 추가 요금이 적용되고 세금이 추가될 수 있습니다.</FooterLabel>
