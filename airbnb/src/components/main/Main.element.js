@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 100%;
   position: relative;
 `
 
