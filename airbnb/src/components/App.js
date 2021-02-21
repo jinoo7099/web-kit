@@ -1,7 +1,7 @@
-import React from 'react'
-import NavBar from './header/NavBar'
-import Main from './main/Main'
-import Footer from './footer/Footer'
+import React from "react";
+import NavBar from "./page/Header";
+import Main from "./page/Main";
+import Footer from "./page/Footer";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Main />
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

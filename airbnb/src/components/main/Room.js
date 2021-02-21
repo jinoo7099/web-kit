@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { ReactComponent as redStarIcon } from '../../assets/icons/redStar.svg'
-import Slider from './Slider'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { ReactComponent as redStarIcon } from "../../assets/icons/redStar.svg";
+import Slider from "./Slider";
 
 const Description = styled.div`
   display: block;
@@ -16,7 +16,7 @@ const Description = styled.div`
   line-height: 20px;
   width: 100%;
   white-space: nowrap;
-`
+`;
 
 const TypeAndAddress = styled.div`
   color: #222222;
@@ -27,7 +27,7 @@ const TypeAndAddress = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 2px;
-`
+`;
 
 const Grade = styled.div`
   font-size: 14px;
@@ -35,14 +35,14 @@ const Grade = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 6px;
-`
+`;
 
 const StarIcon = styled(redStarIcon)`
   height: 14px;
   width: 14px;
   fill: #ff385c;
   margin-right: 4px;
-`
+`;
 
 export default function Room({ address, grade, type, description, images }) {
   return (
@@ -60,7 +60,7 @@ export default function Room({ address, grade, type, description, images }) {
       </TypeAndAddress>
       <Description>{description}</Description>
     </div>
-  )
+  );
 }
 
 Room.propTypes = {
@@ -69,4 +69,4 @@ Room.propTypes = {
   type: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
-}
+};

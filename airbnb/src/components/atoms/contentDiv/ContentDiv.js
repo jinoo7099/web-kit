@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-const NavContentDiv = styled.div`
+const ContentDiv = styled.div`
   font-size: 14px;
   line-height: 18px;
   flex: 1 1 auto;
@@ -13,6 +13,6 @@ const NavContentDiv = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-`
+`;
 
-export default NavContentDiv;
+export default ContentDiv;
