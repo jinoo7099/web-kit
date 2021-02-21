@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { MenuSVG, PersonSVG, GlobeSVG } from "../atoms/icons/icon";
+import { GlobeSVG } from "../atoms/icons/icon";
 import ContentDiv from "../atoms/contentDiv/ContentDiv";
 import NavButton from "../atoms/NavButton/NavButton";
+import UserButton from "./UserButton";
 
 const NavRightContainer = styled.div`
   background-color: #ffffff;
@@ -33,14 +34,7 @@ const RightNav = () => (
         <GlobeSVG />
       </ContentDiv>
     </MenuButton>
-    <MenuButton>
-      <ContentDiv>
-        <MenuSVG size="20" />
-      </ContentDiv>
-      <ContentDiv>
-        <PersonSVG size="20" />
-      </ContentDiv>
-    </MenuButton>
+    <UserButton />
   </NavRightContainer>
 );
 

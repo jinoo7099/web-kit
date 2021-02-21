@@ -1879,7 +1879,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-controls@6.1.18":
+"@storybook/addon-controls@6.1.18", "@storybook/addon-controls@^6.1.18":
   version "6.1.18"
   resolved "https://registry.yarnpkg.com/@storybook/addon-controls/-/addon-controls-6.1.18.tgz#aa85d6003854820bc5d4cf87148a7e4cc2ece207"
   integrity sha512-I3dI6L5up03Uiw1RMVN0HVUgHlfN4CTgI8tex6L49dERUlcDSrfq417DXGvq8ipxHUnb/+0CVYkJ7p6TWzc3yQ==
@@ -11628,7 +11628,7 @@ prompts@2.4.0, prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -11807,13 +11807,6 @@ raw-loader@^4.0.1:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
 
-react-alice-carousel@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-alice-carousel/-/react-alice-carousel-2.4.0.tgz#57f68045996d139c7814452ff598ce8c05f22761"
-  integrity sha512-ea4q7hyvSJr1s97LYQ3gyK1i8KxOQ+IPdt1QYbVqFpm8ZzswDLf0f14Wrh3YQh6FJk4FBd8wPhGKlAG35gKltw==
-  dependencies:
-    vanilla-swipe "^2.2.0"
-
 react-app-polyfill@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-2.0.0.tgz#a0bea50f078b8a082970a9d853dc34b6dcc6a3cf"
@@ -11946,13 +11939,6 @@ react-draggable@^4.0.3:
     classnames "^2.2.5"
     prop-types "^15.6.0"
 
-react-easy-swipe@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/react-easy-swipe/-/react-easy-swipe-0.0.21.tgz#ce9384d576f7a8529dc2ca377c1bf03920bac8eb"
-  integrity sha512-OeR2jAxdoqUMHIn/nS9fgreI5hSpgGoL5ezdal4+oO7YSSgJR8ga+PkYGJrSrJ9MKlPcQjMQXnketrD7WNmNsg==
-  dependencies:
-    prop-types "^15.5.8"
-
 react-element-to-jsx-string@^14.3.1:
   version "14.3.2"
   resolved "https://registry.yarnpkg.com/react-element-to-jsx-string/-/react-element-to-jsx-string-14.3.2.tgz#c0000ed54d1f8b4371731b669613f2d4e0f63d5c"
@@ -12039,15 +12025,6 @@ react-refresh@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
-
-react-responsive-carousel@^3.2.12:
-  version "3.2.12"
-  resolved "https://registry.yarnpkg.com/react-responsive-carousel/-/react-responsive-carousel-3.2.12.tgz#24d860e6d4e72b72e809b8718389290000605de5"
-  integrity sha512-Wdqpu7+xvn3RPy0Q0pIVOms8SsooYmsFLPgSSxOt+G0WvXHpNOZmnLUsI8EgRRhSww8GUXERKlIYy7MZLdOHPA==
-  dependencies:
-    classnames "^2.2.5"
-    prop-types "^15.5.8"
-    react-easy-swipe "^0.0.21"
 
 react-responsive@^8.2.0:
   version "8.2.0"
@@ -14429,11 +14406,6 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
-
-vanilla-swipe@^2.2.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/vanilla-swipe/-/vanilla-swipe-2.3.0.tgz#a2cd466aabed00c1e8abd7b69a86940bf9319516"
-  integrity sha512-4m8vZ/kckRG7RQUYNg+0lGILMHT08KEgwePlRLzediDSu7aQFBLB0V2n36vUmYqq5CVWASOzZ8zpnQFZXIbHbA==
 
 vary@~1.1.2:
   version "1.1.2"
