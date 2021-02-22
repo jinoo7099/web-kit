@@ -36,9 +36,7 @@ const UserButton = () => {
           closable
           maskClosable
           onClose={closeModal}
-        >
-          <MenuButton onClick={closeModal}>종료</MenuButton>
-        </LoginModal>
+        />
       )}
     </>
   );
